@@ -10,7 +10,7 @@ state_prefix = "env:/development"
 internal_cidrs = "172.16.0.0/16,172.19.0.0/16,172.24.0.0/16,10.172.16.0/24,10.172.21.0/24"
 
 aws_profile = "development-eu-west-2"
-instance_type = "t3.medium"
+ec2_instance_type = "t3.medium"
 
 # Certificate for https access through ALB
 ssl_certificate_id = "arn:aws:acm:eu-west-2:169942020521:certificate/248f5001-3d30-4d90-bec3-023e5ab1f572"
@@ -27,4 +27,4 @@ secrets = {
 
 //---------------- END: Environment Secrets for services ---------------------
 
-ecs_key_pair_name = "chs-devops1"
+ec2_key_pair_name = "chs-devops1"

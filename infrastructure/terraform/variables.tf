@@ -31,31 +31,31 @@ variable "internal_cidrs" {}
 variable "team_name" {}
 variable "deploy_to" {}
 
-variable "ecs_key_pair_name" {
+variable "ec2_key_pair_name" {
   description = "The name for the cluster."
 }
 
-variable "instance_type" {
+variable "ec2_instance_type" {
   description = "The name for the autoscaling group for the cluster."
   default     = "t3.medium"
 }
 
-variable "image_id" {
+variable "ec2_image_id" {
   description = "The name for the autoscaling group for the ECS cluster."
   default     = "ami-007ef488b3574da6b" # ECS optimized Linux in London created 16/10/2019
 }
 
-variable "max_instance_size" {
+variable "asg_max_instance_count" {
   description = "The name for the autoscaling group for the cluster."
   default     = 1
 }
 
-variable "min_instance_size" {
+variable "asg_min_instance_count" {
   description = "The name for the autoscaling group for the cluster."
   default     = 1
 }
 
-variable "desired_capacity" {
+variable "asg_desired_instance_count" {
   description = "The name for the autoscaling group for the cluster."
   default     = 1
 }
@@ -69,7 +69,7 @@ variable "zone_name" {}
 
 variable "secrets" {
   description = "The secrets to be added to Parameter Store"
-  type = map
+  type        = map
 }
 
 //---------------- END: Environment Secrets for services ---------------------
