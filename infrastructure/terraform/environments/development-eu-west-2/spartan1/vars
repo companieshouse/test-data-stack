@@ -1,7 +1,7 @@
 aws_bucket = "development-eu-west-2.terraform-state.ch.gov.uk"
 remote_state_bucket = "ch-development-terraform-state-london"
 aws_region = "eu-west-2"
-environment = "devops1"
+environment = "spartan1"
 deploy_to = "development"
 state_prefix = "env:/development"
 
@@ -12,7 +12,7 @@ aws_profile = "development-eu-west-2"
 ec2_instance_type = "t3.medium"
 
 # Certificate for https access through ALB
-ssl_certificate_id = "arn:aws:acm:eu-west-2:169942020521:certificate/248f5001-3d30-4d90-bec3-023e5ab1f572"
+ssl_certificate_id = "arn:aws:acm:eu-west-2:169942020521:certificate/189427a3-3662-41ca-85d8-e1f42b6ea07e"
 zone_id = "Z2KSI4Z5ZN9NT0"
 zone_name = "aws.chdev.org"
 
@@ -26,4 +26,4 @@ secrets = {
 
 //---------------- END: Environment Secrets for services ---------------------
 
-ec2_key_pair_name = "chs-devops1"
+ec2_key_pair_name = "chs-spartan1"

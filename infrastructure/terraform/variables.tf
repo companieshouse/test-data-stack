@@ -1,6 +1,6 @@
 variable "aws_region" {}
 variable "aws_profile" {
-  default = "devlondon"
+  default = "development-eu-west-2"
 }
 
 variable "aws_bucket" {
@@ -28,7 +28,6 @@ variable "vpc_id" {
 
 variable "environment" {}
 variable "internal_cidrs" {}
-variable "team_name" {}
 variable "deploy_to" {}
 
 variable "ec2_key_pair_name" {
