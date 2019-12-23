@@ -3,6 +3,10 @@ provider "aws" {
   version = "~> 2.32.0"
 }
 
+provider "github" {
+  anonymous = true
+}
+
 terraform {
   backend "s3" {
   }
