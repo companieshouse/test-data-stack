@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 provider "github" {
-  anonymous = true
+  token = "${var.github-ssh-key}"
 }
 
 terraform {
