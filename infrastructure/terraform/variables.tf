@@ -63,8 +63,6 @@ variable "ssl_certificate_id" {}
 variable "zone_id" {}
 variable "zone_name" {}
 
-variable "github-ssh-key" {}
-
 
 //---------------- START: Environment Secrets for services ---------------------
 

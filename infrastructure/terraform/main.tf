@@ -3,10 +3,6 @@ provider "aws" {
   version = "~> 2.32.0"
 }
 
-provider "github" {
-  token = "${var.github-ssh-key}"
-}
-
 terraform {
   backend "s3" {
   }
