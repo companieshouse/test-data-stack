@@ -12,6 +12,8 @@ variable "remote_state_bucket" {
 }
 
 variable "state_prefix" {}
+variable "workspace_key_prefix" {}
+variable "state_file_name" {}
 
 # These vpcs are configured for development. Preprod and prod are overridden in the vars file.
 variable "vpc_cidr" {
