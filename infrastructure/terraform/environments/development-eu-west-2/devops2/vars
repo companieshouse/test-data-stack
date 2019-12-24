@@ -14,7 +14,7 @@ aws_profile = "development-eu-west-2"
 ec2_instance_type = "t3.medium"
 
 # Certificate for https access through ALB
-ssl_certificate_id = "arn:aws:acm:eu-west-2:169942020521:certificate/248f5001-3d30-4d90-bec3-023e5ab1f572"     *****    NEED TO CREATE A DEVOPS2 ONE OF THESE - OR IGNORE THE CERT ERROR!!!   ****
+ssl_certificate_id = "arn:aws:acm:eu-west-2:169942020521:certificate/248f5001-3d30-4d90-bec3-023e5ab1f572"
 zone_id = "Z2KSI4Z5ZN9NT0"
 zone_name = "aws.chdev.org"
 
