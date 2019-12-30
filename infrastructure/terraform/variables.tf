@@ -32,6 +32,10 @@ variable "environment" {}
 variable "internal_cidrs" {}
 variable "deploy_to" {}
 
+variable "docker_image" {
+  default = "169942020521.dkr.ecr.eu-west-2.amazonaws.com/test-data-generator:latest"
+}
+
 variable "ec2_key_pair_name" {
   description = "The name for the cluster."
 }

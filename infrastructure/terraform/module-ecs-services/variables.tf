@@ -2,6 +2,8 @@ variable "stack_name" {}
 variable "name_prefix" {}
 variable "environment" {}
 
+variable "docker_image" {}
+
 variable "application_ids" {}
 variable "application_cidrs" {}
 variable "internal_cidrs" {}
