@@ -47,7 +47,7 @@ module "ecs-cluster" {
   name_prefix = local.name_prefix
   environment = "${var.environment}"
 
-  vpc_id                     = "${lookup(var.vpc_id, var.aws_region)}"
+  vpc_id                     = "${data.terraform_remote_state.networks.outputs.vpc_id}"
   ec2_key_pair_name          = "${var.ec2_key_pair_name}"
   ec2_instance_type          = "${var.ec2_instance_type}"
   ec2_image_id               = "${var.ec2_image_id}"
@@ -74,7 +74,7 @@ module "ecs-services" {
   name_prefix = local.name_prefix
   environment = "${var.environment}"
 
-  vpc_id                  = "${lookup(var.vpc_id, var.aws_region)}"
+  vpc_id                  = "${data.terraform_remote_state.networks.outputs.vpc_id}"
   aws_region              = "${var.aws_region}"
   ssl_certificate_id      = "${var.ssl_certificate_id}"
   zone_id                 = "${var.zone_id}"

@@ -21,11 +21,9 @@ variable "vpc_cidr" {
     eu-west-2 = "10.75.0.0/16" #London
   }
 }
-# These vpcs are configured for development. Preprod and prod are overridden in the vars file.
+# VPC ID read from terraform remote state.
 variable "vpc_id" {
-  default = {
-    eu-west-2 = "vpc-074ff55ed5182e144" #London
-  }
+  default     = ""
 }
 
 variable "environment" {}
