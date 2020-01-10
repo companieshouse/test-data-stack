@@ -31,7 +31,7 @@ variable "internal_cidrs" {}
 variable "deploy_to" {}
 
 variable "docker_image" {
-  default = "169942020521.dkr.ecr.eu-west-2.amazonaws.com/test-data-generator:latest"
+  default = "169942020521.dkr.ecr.eu-west-2.amazonaws.com/test-data-generator:latest" # Overridden when called from pipeline.
 }
 
 variable "ec2_key_pair_name" {
