@@ -7,6 +7,7 @@ variable "docker_image" {}
 variable "application_ids" {}
 variable "application_cidrs" {}
 variable "internal_cidrs" {}
+variable "mgmt-eu-west-1_cidrs" {}
 variable "aws_region" {}
 variable "vpc_id" {}
 

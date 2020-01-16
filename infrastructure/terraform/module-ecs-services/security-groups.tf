@@ -6,14 +6,14 @@ resource "aws_security_group" "internal-service-sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = flatten([split(",", var.internal_cidrs), split(",", var.application_cidrs)])
+    cidr_blocks = flatten([split(",", var.internal_cidrs), split(",", var.application_cidrs), var.mgmt-eu-west-1_cidrs])
   }
 
   ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = flatten([split(",", var.internal_cidrs), split(",", var.application_cidrs)])
+    cidr_blocks = flatten([split(",", var.internal_cidrs), split(",", var.application_cidrs), var.mgmt-eu-west-1_cidrs])
   }
 
   egress {

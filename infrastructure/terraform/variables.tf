@@ -21,6 +21,13 @@ variable "vpc_cidr" {
     eu-west-2 = "10.75.0.0/16" #London
   }
 }
+
+# Required for access from existing Concourse instances
+variable "mgmt-eu-west-1_cidrs" {
+  type    = list(string)
+  default = ["10.50.17.0/24","10.50.19.0/24","10.50.21.0/24"]
+}
+
 # VPC ID read from terraform remote state.
 variable "vpc_id" {
   default     = ""

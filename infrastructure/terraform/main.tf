@@ -80,6 +80,7 @@ module "ecs-services" {
   zone_id                 = "${var.zone_id}"
   zone_name               = "${var.zone_name}"
   internal_cidrs          = "${var.internal_cidrs}"
+  mgmt-eu-west-1_cidrs    = "${var.mgmt-eu-west-1_cidrs}"
   application_ids         = "${data.terraform_remote_state.networks.outputs.application_ids}"
   application_cidrs       = "${data.terraform_remote_state.networks.outputs.application_cidrs}"
   ecs_cluster_id          = "${module.ecs-cluster.ecs_cluster_id}"
