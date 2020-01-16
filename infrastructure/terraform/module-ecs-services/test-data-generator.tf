@@ -3,7 +3,7 @@ resource "aws_ecs_service" "test-data-generator-ecs-service" {
   name            = "${var.environment}-test-data-generator"
   cluster         = "${var.ecs_cluster_id}"
   task_definition = "${aws_ecs_task_definition.test-data-generator-task-definition.arn}"
-  desired_count   = 2
+  desired_count   = 1
 
   depends_on = [
     "aws_lb_target_group.test-data-generator-target_group",
