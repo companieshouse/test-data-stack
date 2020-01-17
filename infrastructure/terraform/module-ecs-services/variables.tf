@@ -3,8 +3,7 @@ variable "name_prefix" {}
 variable "environment" {}
 
 variable "docker_registry" {}
-variable "docker_repository" {}
-variable "docker_tag" {}
+variable "app_version_test_data_generator" {}
 
 variable "application_ids" {}
 variable "application_cidrs" {}
