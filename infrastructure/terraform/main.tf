@@ -91,5 +91,6 @@ module "ecs-services" {
   docker_repository         = "${var.docker_repository}"
   docker_tag                = "${var.docker_tag}"
 
+  log_level       = "${var.log_level}"
   secrets_arn_map = "${module.secrets.secrets_arn_map}"
 }

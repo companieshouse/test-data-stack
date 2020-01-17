@@ -23,6 +23,8 @@ variable "ecs_cluster_id" {}
 
 variable "task_execution_role_arn" {}
 
+variable "log_level" {}
+
 //---------------- START: Environment Secrets for services ---------------------
 
 variable "secrets_arn_map" {

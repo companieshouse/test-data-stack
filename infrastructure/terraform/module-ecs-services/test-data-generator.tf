@@ -24,6 +24,7 @@ locals {
       name_prefix               : var.name_prefix
       aws_region                : var.aws_region
       external_top_level_domain : var.external_top_level_domain
+      log_level                 : var.log_level
       docker_registry           : var.docker_registry
       docker_repository         : var.docker_repository
       docker_tag                : var.docker_tag

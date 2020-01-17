@@ -88,6 +88,10 @@ variable "zone_name" {}
 variable "external_top_level_domain" {}
 variable "internal_top_level_domain" {}
 
+variable "log_level" {
+  description = "The log level for services to use: TRACE, DEBUG, INFO or ERROR"
+  default     = "TRACE"
+}
 
 //---------------- START: Environment Secrets for services ---------------------
 
