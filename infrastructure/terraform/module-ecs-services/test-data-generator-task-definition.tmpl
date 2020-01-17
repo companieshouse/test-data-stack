@@ -1,8 +1,7 @@
 [
     {
         "environment": [
-            { "name": "BARCODE_SERVICE_URL", "value": "http://barcode.${environment}.aws.chdev.org" },
-            { "name": "MONGODB_URL", "value": "mongodb://mongo-db1-${environment}.development.aws.internal:27017" },
+            { "name": "BARCODE_SERVICE_URL", "value": "http://barcode.${external_top_level_domain}" },
             { "name": "LOGLEVEL", "value": "TRACE" }
         ],
         "name": "test-data-generator",
@@ -23,8 +22,7 @@
             }
         },
         "secrets": [
-            { "name": "MONGODB_USERNAME", "valueFrom": "${secret_mongo_user_name}" },
-            { "name": "MONGODB_PASSWORD", "valueFrom": "${secret_mongo_password}" }
+            { "name": "MONGODB_URL", "valueFrom": "${secret_mongo_url}" }
         ],
         "essential": true
     }

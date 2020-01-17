@@ -73,6 +73,8 @@ variable "asg_desired_instance_count" {
 variable "ssl_certificate_id" {}
 variable "zone_id" {}
 variable "zone_name" {}
+variable "external_top_level_domain" {}
+variable "internal_top_level_domain" {}
 
 
 //---------------- START: Environment Secrets for services ---------------------

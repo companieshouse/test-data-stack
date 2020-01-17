@@ -17,6 +17,8 @@ ec2_instance_type = "t3.medium"
 ssl_certificate_id = "arn:aws:acm:eu-west-2:169942020521:certificate/248f5001-3d30-4d90-bec3-023e5ab1f572"
 zone_id = "Z2KSI4Z5ZN9NT0"
 zone_name = "aws.chdev.org"
+external_top_level_domain = "devops1.aws.chdev.org"
+internal_top_level_domain = "-devops1.development.aws.internal"
 
 
 //---------------- START: Environment Secrets for services ---------------------
@@ -24,6 +26,7 @@ zone_name = "aws.chdev.org"
 secrets = {
   secret_mongo_user_name  = "AQICAHiujiSaeV3dDdEKHuZ/9qHGe7ylBwQFW/vMFainoOEy5wEU10eVcDR2a7QDqB7Qtp7LAAAAYzBhBgkqhkiG9w0BBwagVDBSAgEAME0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMaIkaIg/tmYqzwC3RAgEQgCBufCUdnVfYNxlu8lVOZg5Z/j0viEuRTAMk/2ZjuCr/nw=="
   secret_mongo_password   = "AQICAHiujiSaeV3dDdEKHuZ/9qHGe7ylBwQFW/vMFainoOEy5wEU10eVcDR2a7QDqB7Qtp7LAAAAYzBhBgkqhkiG9w0BBwagVDBSAgEAME0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMaIkaIg/tmYqzwC3RAgEQgCBufCUdnVfYNxlu8lVOZg5Z/j0viEuRTAMk/2ZjuCr/nw=="
+  secret_mongo_url        = "AQICAHiujiSaeV3dDdEKHuZ/9qHGe7ylBwQFW/vMFainoOEy5wHCmk8ZmOqt28AJEnIQz5PtAAAAnDCBmQYJKoZIhvcNAQcGoIGLMIGIAgEAMIGCBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDHp1SmDXp4xorVzOqgIBEIBVlMw28CggeoUlEj8bnsA92vLu14TNILZ+ZIzWAphYlyD+2biKwSjFFpGi+KDLSNrzH2EKKG+njPuXOSX1LkUgZfU9LlT304HfDQTICF3aC9nj5NrOLA=="
 }
 
 //---------------- END: Environment Secrets for services ---------------------
