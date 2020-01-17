@@ -24,8 +24,6 @@ internal_top_level_domain = "-devops1.development.aws.internal"
 //---------------- START: Environment Secrets for services ---------------------
 
 secrets = {
-  secret_mongo_user_name  = "AQICAHiujiSaeV3dDdEKHuZ/9qHGe7ylBwQFW/vMFainoOEy5wEU10eVcDR2a7QDqB7Qtp7LAAAAYzBhBgkqhkiG9w0BBwagVDBSAgEAME0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMaIkaIg/tmYqzwC3RAgEQgCBufCUdnVfYNxlu8lVOZg5Z/j0viEuRTAMk/2ZjuCr/nw=="
-  secret_mongo_password   = "AQICAHiujiSaeV3dDdEKHuZ/9qHGe7ylBwQFW/vMFainoOEy5wEU10eVcDR2a7QDqB7Qtp7LAAAAYzBhBgkqhkiG9w0BBwagVDBSAgEAME0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMaIkaIg/tmYqzwC3RAgEQgCBufCUdnVfYNxlu8lVOZg5Z/j0viEuRTAMk/2ZjuCr/nw=="
   secret_mongo_url        = "AQICAHiujiSaeV3dDdEKHuZ/9qHGe7ylBwQFW/vMFainoOEy5wHCmk8ZmOqt28AJEnIQz5PtAAAAnDCBmQYJKoZIhvcNAQcGoIGLMIGIAgEAMIGCBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDHp1SmDXp4xorVzOqgIBEIBVlMw28CggeoUlEj8bnsA92vLu14TNILZ+ZIzWAphYlyD+2biKwSjFFpGi+KDLSNrzH2EKKG+njPuXOSX1LkUgZfU9LlT304HfDQTICF3aC9nj5NrOLA=="
 }
 
