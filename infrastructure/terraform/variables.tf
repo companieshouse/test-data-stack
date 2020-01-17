@@ -37,9 +37,21 @@ variable "environment" {}
 variable "internal_cidrs" {}
 variable "deploy_to" {}
 
-variable "docker_image" {
-  default = "169942020521.dkr.ecr.eu-west-2.amazonaws.com/test-data-generator:latest" # Overridden when called from pipeline.
+variable "docker_registry" {
+  default = "169942020521.dkr.ecr.eu-west-2.amazonaws.com"
 }
+variable "docker_repository" {
+  default = "test-data-generator-temp"
+}
+variable "docker_tag" {
+  #default = "test01"
+  default = "0.1.11"
+}
+# variable "docker_image" {
+#   #default = "169942020521.dkr.ecr.eu-west-2.amazonaws.com/test-data-generator:latest" # Overridden when called from pipeline.
+#   #default = "169942020521.dkr.ecr.eu-west-2.amazonaws.com/test-data-generator:latest" # This is the original one built in November.
+#   default = "169942020521.dkr.ecr.eu-west-2.amazonaws.com/test-data-generator-temp:test01" # This version built via pipeline.
+# }
 
 variable "ec2_key_pair_name" {
   description = "The name for the cluster."

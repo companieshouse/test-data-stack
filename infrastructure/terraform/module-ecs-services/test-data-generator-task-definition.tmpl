@@ -6,7 +6,7 @@
             { "name": "LOGLEVEL", "value": "TRACE" }
         ],
         "name": "test-data-generator",
-        "image": "${docker_image}",
+        "image": "${docker_registry}/${docker_repository}:${docker_tag}",
         "cpu": 1,
         "memory": 512,
         "portMappings": [{

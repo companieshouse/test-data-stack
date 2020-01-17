@@ -2,7 +2,9 @@ variable "stack_name" {}
 variable "name_prefix" {}
 variable "environment" {}
 
-variable "docker_image" {}
+variable "docker_registry" {}
+variable "docker_repository" {}
+variable "docker_tag" {}
 
 variable "application_ids" {}
 variable "application_cidrs" {}
