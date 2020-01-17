@@ -87,7 +87,9 @@ module "ecs-services" {
   application_cidrs         = "${data.terraform_remote_state.networks.outputs.application_cidrs}"
   ecs_cluster_id            = "${module.ecs-cluster.ecs_cluster_id}"
   task_execution_role_arn   = "${module.ecs-cluster.ecs_task_execution_role_arn}"
-  docker_image              = "${var.docker_image}"
+  docker_registry           = "${var.docker_registry}"
+  docker_repository         = "${var.docker_repository}"
+  docker_tag                = "${var.docker_tag}"
 
   secrets_arn_map = "${module.secrets.secrets_arn_map}"
 }

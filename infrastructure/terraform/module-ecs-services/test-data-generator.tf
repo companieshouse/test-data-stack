@@ -24,7 +24,9 @@ locals {
       name_prefix               : var.name_prefix
       aws_region                : var.aws_region
       external_top_level_domain : var.external_top_level_domain
-      docker_image              : var.docker_image
+      docker_registry           : var.docker_registry
+      docker_repository         : var.docker_repository
+      docker_tag                : var.docker_tag
     },
       var.secrets_arn_map
   )
