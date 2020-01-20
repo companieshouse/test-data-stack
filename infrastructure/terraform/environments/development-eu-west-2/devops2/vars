@@ -16,15 +16,15 @@ ec2_instance_type = "t3.medium"
 # Certificate for https access through ALB
 ssl_certificate_id = "arn:aws:acm:eu-west-2:169942020521:certificate/10164500-5559-4eec-897a-4032dc83a139"
 zone_id = "Z2KSI4Z5ZN9NT0"
-zone_name = "aws.chdev.org"
-external_top_level_domain = "devops2.aws.chdev.org"
+external_top_level_domain = ".devops2.aws.chdev.org"
 internal_top_level_domain = "-devops2.development.aws.internal"
 
 
 //---------------- START: Environment Secrets for services ---------------------
 
 secrets = {
-  secret_mongo_url        = "AQICAHiujiSaeV3dDdEKHuZ/9qHGe7ylBwQFW/vMFainoOEy5wG0P9YYSJMjcKRnmdYY58vDAAAAnDCBmQYJKoZIhvcNAQcGoIGLMIGIAgEAMIGCBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDC9Ee11GJOYvZcf7wwIBEIBV30dEAlVwse7zeeK+sDIz5RMzH7JYmznghrD8qHFoqQnHingeJcdrY70cGBhuHhlWQmQpaTq/2OGjxED8l0/KiOHgJty8n8wx4ekLYxYBBNQmeuOzjg=="
+  # mongo url should be the full connection string including username/password and any query params or database name where required
+  secret_mongo_url        = "AQICAHj18kGGdlD7YLZp9KcD0wJplABHS0t4sDSFVVI29pGuVQF9cuqiKixSP77CRpWpCSVhAAAAnDCBmQYJKoZIhvcNAQcGoIGLMIGIAgEAMIGCBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDN6EqVbX8Z+Zi2+pzAIBEIBVu6HmvTXwgjtd/JE2HD85SpPPH8n0LsiFVSN1X9LUA0Vsqnt5W8qMlydTKiW0/VzKEcHdcjVPTi3RRquvZWr5ij5d/56kTD9p17D57Yflir0qP730nA=="
 }
 
 //---------------- END: Environment Secrets for services ---------------------

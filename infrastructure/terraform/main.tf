@@ -21,15 +21,14 @@ data "terraform_remote_state" "networks" {
 }
 
 # Configure the remote state data source to acquire configuration
-# created through the code in the regional-infrastructure stack in this repo.
-# aws_profile matches the environment used in regional_infra so statefile path
-# references aws_profile (e.g. devlondon) rather than aws_region (e.g. eu-west-2)
-data "terraform_remote_state" "regional-infrastructure" {
+# created through the code in the services-stack-configs stack in the
+# aws-common-infrastructure-terraform repo.
+data "terraform_remote_state" "services-stack-configs" {
   backend = "s3"
 
   config = {
-    bucket = "${var.remote_state_bucket}"
-    key    = "ecs-stack-pocs/${var.aws_profile}/regional-infrastructure.tfstate"
+    bucket = "${var.aws_bucket}" # aws-common-infrastructure-terraform repo uses the same remote state bucket
+    key    = "aws-common-infrastructure-terraform/common/services-stack-configs.tfstate"
     region = "${var.aws_region}"
   }
 }
@@ -63,7 +62,7 @@ module "secrets" {
   stack_name  = local.stack_name
   name_prefix = local.name_prefix
   environment = "${var.environment}"
-  kms_key_id  = "${data.terraform_remote_state.regional-infrastructure.outputs.poc_ecs_cluster_kms_key_id}"
+  kms_key_id  = "${data.terraform_remote_state.services-stack-configs.outputs.services_stack_configs_kms_key_id}"
   secrets     = "${var.secrets}"
 }
 
@@ -78,7 +77,6 @@ module "ecs-services" {
   aws_region                      = "${var.aws_region}"
   ssl_certificate_id              = "${var.ssl_certificate_id}"
   zone_id                         = "${var.zone_id}"
-  zone_name                       = "${var.zone_name}"
   external_top_level_domain       = "${var.external_top_level_domain}"
   internal_top_level_domain       = "${var.internal_top_level_domain}"
   internal_cidrs                  = "${var.internal_cidrs}"
