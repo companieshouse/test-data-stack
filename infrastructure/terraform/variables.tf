@@ -42,7 +42,7 @@ variable "docker_registry" {
 }
 variable "app_version_test_data_generator" {
   #default = "test01"
-  default = "latest" # TODO - remove default to force version to be explicitly passed in
+  default = "0.1.2" # TODO - remove default to force version to be explicitly passed in
 }
 
 variable "ec2_key_pair_name" {
