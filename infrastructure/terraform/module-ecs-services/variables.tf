@@ -4,6 +4,7 @@ variable "environment" {}
 
 variable "docker_registry" {}
 variable "app_version_test_data_generator" {}
+variable "docker_container_port" {}
 
 variable "application_ids" {}
 variable "application_cidrs" {}

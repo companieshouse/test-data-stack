@@ -12,7 +12,7 @@ resource "aws_ecs_service" "test-data-generator-ecs-service" {
 
   load_balancer {
     target_group_arn = "${aws_lb_target_group.test-data-generator-target_group.arn}"
-    container_port   = 10000
+    container_port   = var.docker_container_port
     container_name   = "test-data-generator"
   }
 }
@@ -27,6 +27,7 @@ locals {
       log_level                       : var.log_level
       docker_registry                 : var.docker_registry
       app_version_test_data_generator : var.app_version_test_data_generator
+      docker_container_port           : var.docker_container_port
     },
       var.secrets_arn_map
   )
@@ -43,7 +44,7 @@ resource "aws_ecs_task_definition" "test-data-generator-task-definition" {
 
 resource "aws_lb_target_group" "test-data-generator-target_group" {
   name     = "${var.environment}-test-data-generator"
-  port     = "10000"
+  port     = var.docker_container_port
   protocol = "HTTP"
   vpc_id   = "${var.vpc_id}"
 

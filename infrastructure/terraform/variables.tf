@@ -46,6 +46,10 @@ variable "app_version_test_data_generator" {
   default = "0.1.2" # TODO - remove default to force version to be explicitly passed in
 }
 
+variable "docker_container_port" {
+  default = "10000"
+}
+
 variable "ec2_key_pair_name" {
   description = "The name for the cluster."
 }

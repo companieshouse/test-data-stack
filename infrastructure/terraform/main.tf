@@ -87,6 +87,7 @@ module "ecs-services" {
   task_execution_role_arn         = "${module.ecs-cluster.ecs_task_execution_role_arn}"
   docker_registry                 = "${var.docker_registry}"
   app_version_test_data_generator = "${var.app_version_test_data_generator}"
+  docker_container_port           = var.docker_container_port
 
   log_level       = "${var.log_level}"
   secrets_arn_map = "${module.secrets.secrets_arn_map}"
