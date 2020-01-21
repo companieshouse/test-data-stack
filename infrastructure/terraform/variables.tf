@@ -38,7 +38,8 @@ variable "internal_cidrs" {}
 variable "deploy_to" {}
 
 variable "docker_registry" {
-  default = "169942020521.dkr.ecr.eu-west-2.amazonaws.com"
+  #default = "169942020521.dkr.ecr.eu-west-2.amazonaws.com" # dev
+  default = "250991044064.dkr.ecr.eu-west-2.amazonaws.com" # staging        TODO - remove from here and set ay env level.
 }
 variable "app_version_test_data_generator" {
   #default = "test01"
