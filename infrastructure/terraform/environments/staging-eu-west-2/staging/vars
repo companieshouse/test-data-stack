@@ -17,8 +17,7 @@ ec2_instance_type = "t3.medium"
 # Certificate for https access through ALB
 ssl_certificate_id = "arn:aws:iam::250991044064:server-certificate/Preprod2020"
 # zone_id = "" no route53 in staging
-external_top_level_domain = "-staging-aws.companieshouse.gov.uk"
-internal_top_level_domain = ".staging.aws.internal"
+top_level_domain = ".staging.aws.internal"
 
 
 //---------------- START: Environment Secrets for services ---------------------

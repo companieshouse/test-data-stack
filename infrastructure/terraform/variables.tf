@@ -83,8 +83,7 @@ variable "ssl_certificate_id" {}
 variable "zone_id" {
   default = "" # default of empty string is used as conditional when creating route53 records i.e. if no zone_id provided then no route53
 }
-variable "external_top_level_domain" {}
-variable "internal_top_level_domain" {}
+variable "top_level_domain" {}
 
 variable "log_level" {
   description = "The log level for services to use: TRACE, DEBUG, INFO or ERROR"

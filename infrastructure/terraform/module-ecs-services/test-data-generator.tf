@@ -23,7 +23,7 @@ locals {
       environment                     : var.environment
       name_prefix                     : var.name_prefix
       aws_region                      : var.aws_region
-      external_top_level_domain       : var.external_top_level_domain
+      top_level_domain                : var.top_level_domain
       log_level                       : var.log_level
       docker_registry                 : var.docker_registry
       app_version_test_data_generator : var.app_version_test_data_generator
@@ -84,7 +84,7 @@ resource "aws_route53_record" "test-data-generator-r53-record" {
   count   = "${var.zone_id == "" ? 0 : 1}" # zone_id defaults to empty string giving count = 0 i.e. not route 53 record
 
   zone_id = var.zone_id
-  name    = "test-data${var.external_top_level_domain}"
+  name    = "test-data${var.top_level_domain}"
   type    = "A"
   alias {
     name                   = aws_lb.test-data-generator-lb.dns_name
