@@ -1,7 +1,7 @@
 aws_bucket = "staging-eu-west-2.terraform-state.ch.gov.uk"
 remote_state_bucket = "ch-service-staging-terraform-state"
 aws_region = "eu-west-2"
-environment = "staging"
+environment = "staging-test"
 deploy_to = "staging"
 state_prefix = "env:/staging"
 workspace_key_prefix = "test-data-generator-stack"
@@ -16,15 +16,15 @@ ec2_instance_type = "t3.medium"
 # Certificate for https access through ALB
 ssl_certificate_id = "arn:aws:iam::250991044064:server-certificate/Preprod2020"
 # zone_id = "" no route53 in staging
-external_top_level_domain = "-staging-aws.companieshouse.gov.uk"
-internal_top_level_domain = ".staging.aws.internal"
+external_top_level_domain = "-staging-test-aws.companieshouse.gov.uk"
+internal_top_level_domain = "-test.staging.aws.internal"
 
 
 //---------------- START: Environment Secrets for services ---------------------
 
 secrets = {
   # mongo url should be the full connection string including username/password and any query params or database name where required
-  secret_mongo_url        = "AQICAHjV3dn3XpgHsASsEiyZw7uR7NMTiQ9rfZhfK/qQcoMxgAGirzoyrLnsakiGdVkeefV3AAAAoTCBngYJKoZIhvcNAQcGoIGQMIGNAgEAMIGHBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDJVuAM7X8OTLy7EsVgIBEIBaU7XILD099jrZioN2vgvaecFzsrhagoEavn0Wxa7CT6dzpltrHdI4lt8rNqO8v+ddrKf/48phS5PwYbHfslaDd42TxsLPZH5xzV5btAJwjqmZS/tt0Ew+9lfa"
+  secret_mongo_url = "AQICAHjV3dn3XpgHsASsEiyZw7uR7NMTiQ9rfZhfK/qQcoMxgAHbOeebB7o3ZSdrae/Gk/zeAAAAlDCBkQYJKoZIhvcNAQcGoIGDMIGAAgEAMHsGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMehWiVpoqr7iB+9hIAgEQgE4GFRWRNa0SPHqcIVdFCK8BdMMYOi6zaBBqlIZZqTjzaZcXZNP670DJJTJuU1BasPAciZgrpKE5UwF5PisYuoNKGdOGOGP2j3C1EP4N1jU="
 }
 
 //---------------- END: Environment Secrets for services ---------------------
