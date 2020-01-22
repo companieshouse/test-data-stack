@@ -24,7 +24,7 @@ top_level_domain = ".spartan1.aws.chdev.org"
 
 secrets = {
   # mongo url should be the full connection string including username/password and any query params or database name where required
-  secret_mongo_url        = "AQICAHj18kGGdlD7YLZp9KcD0wJplABHS0t4sDSFVVI29pGuVQGYxpgPyhld3YmprBj6yArBAAAAnTCBmgYJKoZIhvcNAQcGoIGMMIGJAgEAMIGDBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDMOx5Z7XdFH/dcj3GgIBEIBW2zT3Dfh2Xm50h0tuBFcXmRqkXBtO2zRtFMZGaexhIrMXRyJB2P64ykZm7RHBLFUlMA0qHdgio+IxP614PYdronPaLxS+0jojCsXu08DXq8/oYUfvy4A="
+  secret_mongo_url        = "AQICAHiGzzDvHHBNLNb6iIUb+pGlu0We3Ddnsj5Ebvb3gDhRTQF4MxVQjP4307UrE43l3BJFAAAAnDCBmQYJKoZIhvcNAQcGoIGLMIGIAgEAMIGCBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDJVZgYPRQP3gvDFonwIBEIBVjL4d4JfVuijSkTiQw280m02HGHzpr0ugxQoV485ylttdI4ru4dRb0vlfHZZEoAgrGOQGuLn2tFEcA9N5kAqPuQ/1ZufUwJMED7y8vafxbLdlfh10Kg=="
 }
 
 //---------------- END: Environment Secrets for services ---------------------
