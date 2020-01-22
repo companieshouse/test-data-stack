@@ -1,8 +1,8 @@
 
 resource "aws_ecs_service" "test-data-generator-ecs-service" {
   name            = "${var.environment}-test-data-generator"
-  cluster         = "${var.ecs_cluster_id}"
-  task_definition = "${aws_ecs_task_definition.test-data-generator-task-definition.arn}"
+  cluster         = var.ecs_cluster_id
+  task_definition = aws_ecs_task_definition.test-data-generator-task-definition.arn
   desired_count   = 1
 
   depends_on = [
@@ -11,7 +11,7 @@ resource "aws_ecs_service" "test-data-generator-ecs-service" {
   ]
 
   load_balancer {
-    target_group_arn = "${aws_lb_target_group.test-data-generator-target_group.arn}"
+    target_group_arn = aws_lb_target_group.test-data-generator-target_group.arn
     container_port   = var.docker_container_port
     container_name   = "test-data-generator"
   }
@@ -35,7 +35,7 @@ locals {
 
 resource "aws_ecs_task_definition" "test-data-generator-task-definition" {
   family             = "${var.environment}-test-data-generator"
-  execution_role_arn = "${var.task_execution_role_arn}"
+  execution_role_arn = var.task_execution_role_arn
 
   container_definitions = templatefile(
     "${path.module}/test-data-generator-task-definition.tmpl", local.definition
@@ -46,7 +46,7 @@ resource "aws_lb_target_group" "test-data-generator-target_group" {
   name     = "${var.environment}-test-data-generator"
   port     = var.docker_container_port
   protocol = "HTTP"
-  vpc_id   = "${var.vpc_id}"
+  vpc_id   = var.vpc_id
 
   health_check {
     healthy_threshold   = "5"
@@ -68,27 +68,27 @@ resource "aws_lb" "test-data-generator-lb" {
 }
 
 resource "aws_lb_listener" "test-data-generator-lb-listener" {
-  load_balancer_arn = "${aws_lb.test-data-generator-lb.arn}"
+  load_balancer_arn = aws_lb.test-data-generator-lb.arn
   port              = "443"
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = "${var.ssl_certificate_id}"
+  certificate_arn   = var.ssl_certificate_id
 
   default_action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.test-data-generator-target_group.arn}"
+    target_group_arn = aws_lb_target_group.test-data-generator-target_group.arn
   }
 }
 
 resource "aws_route53_record" "test-data-generator-r53-record" {
   count   = "${var.zone_id == "" ? 0 : 1}" # zone_id defaults to empty string giving count = 0 i.e. not route 53 record
 
-  zone_id = "${var.zone_id}"
+  zone_id = var.zone_id
   name    = "test-data${var.external_top_level_domain}"
   type    = "A"
   alias {
-    name                   = "${aws_lb.test-data-generator-lb.dns_name}"
-    zone_id                = "${aws_lb.test-data-generator-lb.zone_id}"
+    name                   = aws_lb.test-data-generator-lb.dns_name
+    zone_id                = aws_lb.test-data-generator-lb.zone_id
     evaluate_target_health = false
   }
 }

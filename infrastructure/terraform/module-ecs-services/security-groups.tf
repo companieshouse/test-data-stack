@@ -1,6 +1,6 @@
 resource "aws_security_group" "internal-service-sg" {
   description = "Security group for internal service albs"
-  vpc_id      = "${var.vpc_id}"
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port   = 80
@@ -24,7 +24,7 @@ resource "aws_security_group" "internal-service-sg" {
   }
 
   tags = {
-    Environment = "${var.environment}"
+    Environment = var.environment
     Name        = "${var.name_prefix}-internal-service-sg"
   }
 }
