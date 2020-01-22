@@ -24,7 +24,7 @@ top_level_domain = ".devops1.aws.chdev.org"
 
 secrets = {
   # mongo url should be the full connection string including username/password and any query params or database name where required
-  secret_mongo_url        = "AQICAHiGzzDvHHBNLNb6iIUb+pGlu0We3Ddnsj5Ebvb3gDhRTQF4MxVQjP4307UrE43l3BJFAAAAnDCBmQYJKoZIhvcNAQcGoIGLMIGIAgEAMIGCBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDJVZgYPRQP3gvDFonwIBEIBVjL4d4JfVuijSkTiQw280m02HGHzpr0ugxQoV485ylttdI4ru4dRb0vlfHZZEoAgrGOQGuLn2tFEcA9N5kAqPuQ/1ZufUwJMED7y8vafxbLdlfh10Kg=="
+  secret_mongo_url        = "AQICAHgoXF78AJNfRMuXp3WcZI4XjNDO1/A/K9KNCM4FHTopZwEOdudougu17mN2xumI0mp4AAAAnDCBmQYJKoZIhvcNAQcGoIGLMIGIAgEAMIGCBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDEh0SNPDV5TH7siwjgIBEIBVNvriTxRsfMPbQc84abE6DCxT15LwWn5cYIg7o+lI0rMMnx+AXQz4CgZf2HkhhNU++XUrzYo1mwMR+I20vedWpx3vtLOLGjKEXEC6Kk/CEkMrkI4qlg=="
 }
 
 //---------------- END: Environment Secrets for services ---------------------
