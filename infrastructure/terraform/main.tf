@@ -70,16 +70,8 @@ module "secrets" {
   name_prefix = local.name_prefix
   environment = var.environment
   kms_key_id  = data.terraform_remote_state.services-stack-configs.outputs.services_stack_configs_kms_key_id
-  # secrets     = var.secrets
-  # secrets      = data.vault_generic_secret.secrets # data "aws_kms_secrets" "secrets":    8:     payload = each.value       Inappropriate value for attribute "payload": string required.
-  # secrets = module.vault-secrets.secrets # This one worked with the module
-  #secrets =  local.vault_secrets
-  #secrets     = tomap(data.vault_generic_secret.secrets) # same error as above
-  #secrets     = zipmap(var.vault_secret_names,data.vault_generic_secret.secrets)
   secrets      = data.vault_generic_secret.secrets
 }
-
-
 
 module "ecs-services" {
   source = "./module-ecs-services"
@@ -115,33 +107,4 @@ output "vault_secrets" {
   value = data.vault_generic_secret.secrets
 }
 
-# data "aws_kms_secrets" "kms_secrets_2" {
-#   for_each = data.vault_generic_secret.secrets
-#   secret {
-#      name    = each.key
-#      payload = "each.value"
-#    }
-#  }
-
-# output "vault_secrets3" {
-#   #value = data.vault_generic_secret.secrets["secret_mongo_url"].key         This object has no argument, nested block, or exported attribute named "key".
-#   value = data.vault_generic_secret.secrets.key
 # }
- output "vault_secrets2" {
-   value = data.vault_generic_secret.secrets["secret_mongo_url"].data["value"]
- }
-
- output "vault_secrets3" {
-   value = {
-   for secret in data.vault_generic_secret.secrets:
-   #regex("([^/]+$)",secret.path)[0] => secret.data["value"] WORKS
-   #split("/",secret.path)[0] => secret.data["value"]
-   #split("/",secret.path)[length(split("/",secret.path))-1] => secret.data["value"]   WORKS BUT CLUNKY
-   reverse(split("/",secret.path))[0] => secret.data["value"]
-   }
-   description = "The ARNs for all secrets"
- }
-
- output "vault_secrets4" {
-   value = [module.vault-secrets.secrets]
- }
