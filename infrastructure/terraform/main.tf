@@ -39,6 +39,7 @@ data "vault_generic_secret" "secrets" {
   for_each = toset(var.vault_secret_names)
   path = "applications/${var.aws_profile}/${var.environment}/${each.value}"
 }
+
 locals {
   # stack name is hardcoded here in main.tf for this stack. It should not be overridden per env
   stack_name  = "test-data-generator"
@@ -62,11 +63,6 @@ module "ecs-cluster" {
   application_subnet_ids     = data.terraform_remote_state.networks.outputs.application_ids
 }
 
-module "vault-secrets" {
-  source = "./module-vault-secrets"
-  secrets      = data.vault_generic_secret.secrets
-}
-
 module "secrets" {
   source = "./module-secrets"
 
@@ -76,10 +72,11 @@ module "secrets" {
   kms_key_id  = data.terraform_remote_state.services-stack-configs.outputs.services_stack_configs_kms_key_id
   # secrets     = var.secrets
   # secrets      = data.vault_generic_secret.secrets # data "aws_kms_secrets" "secrets":    8:     payload = each.value       Inappropriate value for attribute "payload": string required.
-  secrets = module.vault-secrets.secrets
+  # secrets = module.vault-secrets.secrets # This one worked with the module
   #secrets =  local.vault_secrets
   #secrets     = tomap(data.vault_generic_secret.secrets) # same error as above
   #secrets     = zipmap(var.vault_secret_names,data.vault_generic_secret.secrets)
+  secrets      = data.vault_generic_secret.secrets
 }
 
 
