@@ -97,4 +97,12 @@ variable "secrets" {
   type        = map
 }
 
+# Secrets
+variable "vault_secret_names" {
+  default = [
+    "secret_mongo_url"
+  ]
+  type = list(string)
+}
+
 //---------------- END: Environment Secrets for services ---------------------
