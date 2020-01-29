@@ -43,7 +43,7 @@ provider "vault" {
 }
 
 data "vault_generic_secret" "secrets" {
-  for_each = toset(var.vault_secret_names)
+  for_each = toset(var.vault_secrets)
   path = "applications/${var.aws_profile}/${var.environment}/${each.value}"
 }
 
@@ -77,7 +77,7 @@ module "secrets" {
   name_prefix = local.name_prefix
   environment = var.environment
   kms_key_id  = data.terraform_remote_state.services-stack-configs.outputs.services_stack_configs_kms_key_id
-  secrets      = data.vault_generic_secret.secrets
+  secrets     = data.vault_generic_secret.secrets
 }
 
 module "ecs-services" {

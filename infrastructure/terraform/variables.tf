@@ -95,16 +95,8 @@ variable "platform_vault_password" {}
 
 //---------------- START: Environment Secrets for services ---------------------
 
-variable "secrets" {
-  description = "The secrets to be added to Parameter Store"
-  type        = map
-}
-
-# Secrets
-variable "vault_secret_names" {
-  default = [
-    "secret_mongo_url"
-  ]
+variable "vault_secrets" {
+  default = [ "secret_mongo_url" ]
   type = list(string)
 }
 
