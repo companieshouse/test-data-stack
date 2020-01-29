@@ -15,7 +15,8 @@ variable "vpc_id" {}
 
 variable "ssl_certificate_id" {}
 variable "zone_id" {}
-variable "top_level_domain" {}
+variable "external_top_level_domain" {}
+variable "internal_top_level_domain" {}
 
 variable "ecs_cluster_id" {}
 

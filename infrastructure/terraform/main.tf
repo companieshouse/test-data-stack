@@ -91,7 +91,8 @@ module "ecs-services" {
   aws_region                      = var.aws_region
   ssl_certificate_id              = var.ssl_certificate_id
   zone_id                         = var.zone_id
-  top_level_domain                = var.top_level_domain
+  external_top_level_domain       = var.external_top_level_domain
+  internal_top_level_domain       = var.internal_top_level_domain
   internal_cidrs                  = var.internal_cidrs
   mgmt-eu-west-1_cidrs            = var.mgmt-eu-west-1_cidrs
   application_ids                 = data.terraform_remote_state.networks.outputs.application_ids

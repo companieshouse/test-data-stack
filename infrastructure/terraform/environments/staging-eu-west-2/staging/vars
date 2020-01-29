@@ -17,6 +17,11 @@ ec2_instance_type = "t3.medium"
 # Certificate for https access through ALB
 ssl_certificate_id = "arn:aws:iam::250991044064:server-certificate/Preprod2020"
 # zone_id = "" no route53 in staging
-top_level_domain = ".staging.aws.internal"
+#top_level_domain = ".staging.aws.internal"
+#external_top_level_domain = "-staging-aws.companieshouse.gov.uk"
+# The line below is temporary because no 'external' DNS record yet exists.
+external_top_level_domain = ".staging.aws.internal"
+#
+internal_top_level_domain = ".staging.aws.internal"
 
 ec2_key_pair_name = "ch-aws-staging"
