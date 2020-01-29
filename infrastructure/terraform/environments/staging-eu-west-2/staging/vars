@@ -19,14 +19,4 @@ ssl_certificate_id = "arn:aws:iam::250991044064:server-certificate/Preprod2020"
 # zone_id = "" no route53 in staging
 top_level_domain = ".staging.aws.internal"
 
-
-//---------------- START: Environment Secrets for services ---------------------
-
-secrets = {
-  # mongo url should be the full connection string including username/password and any query params or database name where required
-  secret_mongo_url        = "AQICAHj+An2SSoiCBuCBEYLN1+P66ptced6EyNqJ09UV6QE9LAEjXCJskx7GDpVRLGcNAbm1AAAAsTCBrgYJKoZIhvcNAQcGoIGgMIGdAgEAMIGXBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDBQsvaZihK7QFxD6BAIBEIBqNx4jXmJDgxQ72hJH8VbDH9J6K8TES7FKmbdMVE26vdeyVFCh0y8VlQTfhLwL1aawNyIFKpqXBUVlrd6iEulnOCPVr+aBg5p7tZ9pBYIQ7/N8GT++om8Ln4LqJeAtVkDyuGXigWLppKlAgA=="
-}
-
-//---------------- END: Environment Secrets for services ---------------------
-
 ec2_key_pair_name = "ch-aws-staging"
