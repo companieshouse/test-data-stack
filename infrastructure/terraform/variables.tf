@@ -90,8 +90,8 @@ variable "log_level" {
   default     = "TRACE"
 }
 
-variable "platform_vault_username" {}
-variable "platform_vault_password" {}
+variable "vault_username" {}
+variable "vault_password" {}
 
 //---------------- START: Environment Secrets for services ---------------------
 
