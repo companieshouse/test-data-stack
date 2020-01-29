@@ -90,8 +90,9 @@ variable "log_level" {
   default     = "TRACE"
 }
 
-variable "vault_username" {}
-variable "vault_password" {}
+# Vault credentials read from environment
+variable "VAULT_USERNAME" {}
+variable "VAULT_PASSWORD" {}
 
 //---------------- START: Environment Secrets for services ---------------------
 

@@ -35,9 +35,9 @@ data "terraform_remote_state" "services-stack-configs" {
 
 provider "vault" {
   auth_login {
-    path = "auth/userpass/login/${var.vault_username}"
+    path = "auth/userpass/login/${var.VAULT_USERNAME}"
     parameters = {
-      password = var.vault_password
+      password = var.VAULT_PASSWORD
     }
   }
 }
