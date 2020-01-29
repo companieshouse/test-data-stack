@@ -91,8 +91,8 @@ variable "log_level" {
 }
 
 # Vault credentials read from environment
-variable "VAULT_USERNAME" {}
-variable "VAULT_PASSWORD" {}
+variable "vault_username" {}
+variable "vault_password" {}
 
 //---------------- START: Environment Secrets for services ---------------------
 
