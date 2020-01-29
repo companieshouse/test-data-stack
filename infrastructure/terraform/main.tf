@@ -33,7 +33,14 @@ data "terraform_remote_state" "services-stack-configs" {
   }
 }
 
-provider "vault" {}
+provider "vault" {
+  auth_login {
+    path = "auth/userpass/login/${var.platform_vault_username}"
+    parameters = {
+      password = var.platform_vault_password
+    }
+  }
+}
 
 data "vault_generic_secret" "secrets" {
   for_each = toset(var.vault_secret_names)
