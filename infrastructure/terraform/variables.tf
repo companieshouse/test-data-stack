@@ -98,7 +98,7 @@ variable "vault_password" {}
 //---------------- START: Environment Secrets for services ---------------------
 
 variable "vault_secrets" {
-  default = [ "secret_mongo_url" ]
+  default = [ "secret-mongo-url" ]
   type = list(string)
 }
 

@@ -44,7 +44,7 @@ provider "vault" {
 
 data "vault_generic_secret" "secrets" {
   for_each = toset(var.vault_secrets)
-  path = "applications/${var.aws_profile}/${var.environment}/${each.value}"
+  path = "applications/${var.aws_profile}/${var.environment}/${local.stack_name}/${each.value}"
 }
 
 locals {
