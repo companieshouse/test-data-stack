@@ -61,7 +61,7 @@ resource "aws_lb_target_group" "test-data-generator-target_group" {
 }
 
 resource "aws_lb" "test-data-generator-lb" {
-  name            = "test-data-generator-${var.environment}-lb"
+  name            = "test-data-${var.environment}-lb"
   security_groups = [aws_security_group.internal-service-sg.id]
   subnets         = flatten([split(",", var.application_ids)])
   internal        = true
