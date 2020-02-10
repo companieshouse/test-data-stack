@@ -2,7 +2,7 @@
 
 ## Introduction
 
-These scripts are used to encrypt parameters for use with the AWS parameter store. There are two scripts available to use and each one serves its own purpose.
+These scripts are used to encrypt or decrypt parameters for use with the AWS parameter store. There are three scripts available to use and each one serves its own purpose.
 
 ## Prerequisites
 
