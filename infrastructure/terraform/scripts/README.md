@@ -29,10 +29,10 @@ Use cases:
 - **encrypt-secret** - for the common values (e.g. usernames, passwords, AWS keys).
 - **encrypt-secret-with-file** - this should be used for the more complex values (e.g. RSA keys, host_urls)
 
-### encrypt-secret scripts
+### encrypt-secret script
 
 To run the script you will need to have a valid KMS_KEY_ID which will be used for the encryption of the value. The key-id is input via the command-line via a prompt. You will be prompted to enter your value in the command line. There is a final prompt which asks if the user is happy to proceed with the given key-id and value. The encrypted value is output via the command line when successfully encrypted which you can then use in your Terraform repo containing the secret parameters.
 
-### encrypt-secret-with-file scripts
+### encrypt-secret-with-file script
 
 To run the script you will need to have a valid KMS_KEY_ID which will be used for the encryption of the value. The key-id is input via the command-line via a prompt. A new file is created where the user should input their value and save the file on completion. The user is prompted to confirm if the value is correct before proceeding. There is a final prompt which asks if the user is happy to proceed with the given key-id and value. The encrypted value is output via the command line when successfully encrypted which you can then use in your Terraform repo containing the secret parameters.
