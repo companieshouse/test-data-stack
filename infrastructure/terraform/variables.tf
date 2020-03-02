@@ -37,14 +37,8 @@ variable "environment" {}
 variable "internal_cidrs" {}
 variable "deploy_to" {}
 
-variable "docker_registry" {
-  #default = "169942020521.dkr.ecr.eu-west-2.amazonaws.com" # dev
-  default = "250991044064.dkr.ecr.eu-west-2.amazonaws.com" # staging        TODO - remove from here and set ay env level.
-}
-variable "app_version_test_data_generator" {
-  #default = "test01"
-  default = "0.1.2" # TODO - remove default to force version to be explicitly passed in
-}
+variable "docker_registry" {} # This value passed in from CI pipeline
+variable "app_version_test_data_generator" {} # This value passed in from CI pipeline
 
 variable "docker_container_port" {
   default = "10000"
@@ -92,8 +86,8 @@ variable "log_level" {
 }
 
 # Vault credentials read from environment
-variable "vault_username" {}
-variable "vault_password" {}
+variable "vault_username" {} # This value passed in from CI pipeline
+variable "vault_password" {} # This value passed in from CI pipeline
 
 //---------------- START: Environment Secrets for services ---------------------
 
