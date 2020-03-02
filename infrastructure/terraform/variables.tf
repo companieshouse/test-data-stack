@@ -82,7 +82,7 @@ variable "internal_top_level_domain" {}
 
 variable "log_level" {
   description = "The log level for services to use: TRACE, DEBUG, INFO or ERROR"
-  default     = "TRACE"
+  default     = "INFO"
 }
 
 # Vault credentials read from environment
