@@ -34,7 +34,6 @@ variable "vpc_id" {
 }
 
 variable "environment" {}
-variable "internal_cidrs" {}
 variable "deploy_to" {}
 
 variable "docker_registry" {} # This value passed in from CI pipeline

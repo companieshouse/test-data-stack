@@ -20,6 +20,21 @@ data "terraform_remote_state" "networks" {
   }
 }
 
+# Configure the remote state data source to acquire configuration created
+# through the code in aws-common-infrastructure-terraform/groups/networking.
+data "terraform_remote_state" "networks_common_infra" {
+  backend = "s3"
+  config = {
+    bucket = var.aws_bucket
+    key    = "aws-common-infrastructure-terraform/common/networking.tfstate"
+    region = var.aws_region
+  }
+}
+locals {
+  internal_cidrs = values(data.terraform_remote_state.networks_common_infra.outputs.internal_cidrs)
+  vpn_cidrs      = values(data.terraform_remote_state.networks_common_infra.outputs.vpn_cidrs)
+}
+
 # Configure the remote state data source to acquire configuration
 # created through the code in the services-stack-configs stack in the
 # aws-common-infrastructure-terraform repo.
@@ -93,7 +108,7 @@ module "ecs-services" {
   zone_id                         = var.zone_id
   external_top_level_domain       = var.external_top_level_domain
   internal_top_level_domain       = var.internal_top_level_domain
-  internal_cidrs                  = var.internal_cidrs
+  internal_cidrs                  = concat(local.internal_cidrs,local.vpn_cidrs)
   mgmt-eu-west-1_cidrs            = var.mgmt-eu-west-1_cidrs
   application_ids                 = data.terraform_remote_state.networks.outputs.application_ids
   application_cidrs               = data.terraform_remote_state.networks.outputs.application_cidrs

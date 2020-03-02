@@ -7,9 +7,6 @@ state_prefix = "env:/staging"
 workspace_key_prefix = "test-data-generator-stack"
 state_file_name = "test-data-generator.tfstate"
 
-# Allows internal access to servers from these addresses.
-internal_cidrs = "172.16.0.0/16,172.19.0.0/16,172.24.0.0/16,10.172.16.0/24,10.172.21.0/24"
-
 aws_profile = "staging-eu-west-2"
 ec2_instance_type = "t3.medium"
 
