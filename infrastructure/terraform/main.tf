@@ -106,11 +106,3 @@ module "ecs-services" {
   log_level       = var.log_level
   secrets_arn_map = module.secrets.secrets_arn_map
 }
-
-# output "var_secrets" {
-#   value = var.secrets
-# }
-#
-# output "vault_secrets" {
-#   value = data.vault_generic_secret.secrets
-# }
