@@ -7,9 +7,7 @@ variable "app_version_test_data_generator" {}
 variable "docker_container_port" {}
 
 variable "application_ids" {}
-variable "application_cidrs" {}
-variable "internal_cidrs" {}
-variable "mgmt-eu-west-1_cidrs" {}
+variable "web_access_cidrs" {}
 variable "aws_region" {}
 variable "vpc_id" {}
 
