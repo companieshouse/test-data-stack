@@ -16,7 +16,7 @@ variable "workspace_key_prefix" {}
 variable "state_file_name" {}
 
 # Required for access from existing Concourse instances
-variable "mgmt-eu-west-1_cidrs" {
+variable "dev_management_cidrs" {
   type    = list(string)
   default = ["10.50.17.0/24","10.50.19.0/24","10.50.21.0/24"]
 }

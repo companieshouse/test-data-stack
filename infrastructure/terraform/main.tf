@@ -109,7 +109,7 @@ module "ecs-services" {
   external_top_level_domain       = var.external_top_level_domain
   internal_top_level_domain       = var.internal_top_level_domain
   internal_cidrs                  = concat(local.internal_cidrs,local.vpn_cidrs)
-  mgmt-eu-west-1_cidrs            = var.mgmt-eu-west-1_cidrs
+  mgmt-eu-west-1_cidrs            = var.dev_management_cidrs
   application_ids                 = data.terraform_remote_state.networks.outputs.application_ids
   application_cidrs               = data.terraform_remote_state.networks.outputs.application_cidrs
   ecs_cluster_id                  = module.ecs-cluster.ecs_cluster_id
