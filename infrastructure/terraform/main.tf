@@ -18,6 +18,11 @@ data "terraform_remote_state" "networks" {
     region = var.aws_region
   }
 }
+locals {
+  vpc_id            = data.terraform_remote_state.networks.outputs.vpc_id
+  application_ids   = data.terraform_remote_state.networks.outputs.application_ids
+  application_cidrs = data.terraform_remote_state.networks.outputs.application_cidrs
+}
 
 # Configure the remote state data source to acquire configuration created
 # through the code in aws-common-infrastructure-terraform/groups/networking.
@@ -73,14 +78,14 @@ module "ecs-cluster" {
   name_prefix = local.name_prefix
   environment = var.environment
 
-  vpc_id                     = data.terraform_remote_state.networks.outputs.vpc_id
+  vpc_id                     = local.vpc_id
   ec2_key_pair_name          = var.ec2_key_pair_name
   ec2_instance_type          = var.ec2_instance_type
   ec2_image_id               = var.ec2_image_id
   asg_max_instance_count     = var.asg_max_instance_count
   asg_min_instance_count     = var.asg_min_instance_count
   asg_desired_instance_count = var.asg_desired_instance_count
-  application_subnet_ids     = data.terraform_remote_state.networks.outputs.application_ids
+  application_subnet_ids     = local.application_ids
 }
 
 module "secrets" {
@@ -100,7 +105,7 @@ module "ecs-services" {
   name_prefix = local.name_prefix
   environment = var.environment
 
-  vpc_id                          = data.terraform_remote_state.networks.outputs.vpc_id
+  vpc_id                          = local.vpc_id
   aws_region                      = var.aws_region
   ssl_certificate_id              = var.ssl_certificate_id
   zone_id                         = var.zone_id
@@ -108,8 +113,8 @@ module "ecs-services" {
   internal_top_level_domain       = var.internal_top_level_domain
   internal_cidrs                  = concat(local.internal_cidrs,local.vpn_cidrs)
   mgmt-eu-west-1_cidrs            = var.dev_management_cidrs
-  application_ids                 = data.terraform_remote_state.networks.outputs.application_ids
-  application_cidrs               = data.terraform_remote_state.networks.outputs.application_cidrs
+  application_ids                 = local.application_ids
+  application_cidrs               = local.application_cidrs
   ecs_cluster_id                  = module.ecs-cluster.ecs_cluster_id
   task_execution_role_arn         = module.ecs-cluster.ecs_task_execution_role_arn
   docker_registry                 = var.docker_registry
