@@ -12,7 +12,6 @@ terraform {
 # created through the code in ch-service-terraform/aws-mm-networks.
 data "terraform_remote_state" "networks" {
   backend = "s3"
-
   config = {
     bucket = var.remote_state_bucket
     key    = "${var.state_prefix}/${var.deploy_to}/${var.deploy_to}.tfstate"
@@ -40,7 +39,6 @@ locals {
 # aws-common-infrastructure-terraform repo.
 data "terraform_remote_state" "services-stack-configs" {
   backend = "s3"
-
   config = {
     bucket = var.aws_bucket # aws-common-infrastructure-terraform repo uses the same remote state bucket
     key    = "aws-common-infrastructure-terraform/common/services-stack-configs.tfstate"
