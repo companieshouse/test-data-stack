@@ -15,13 +15,6 @@ variable "state_prefix" {}
 variable "workspace_key_prefix" {}
 variable "state_file_name" {}
 
-# These vpcs are configured for development. Preprod and prod are overridden in the vars file.
-variable "vpc_cidr" {
-  default = {
-    eu-west-2 = "10.75.0.0/16" #London
-  }
-}
-
 # Required for access from existing Concourse instances
 variable "mgmt-eu-west-1_cidrs" {
   type    = list(string)
