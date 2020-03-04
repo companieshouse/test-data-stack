@@ -116,7 +116,7 @@ module "ecs-services" {
   ecs_cluster_id                  = module.ecs-cluster.ecs_cluster_id
   task_execution_role_arn         = module.ecs-cluster.ecs_task_execution_role_arn
   docker_registry                 = var.docker_registry
-  app_version_test_data_generator = var.app_version_test_data_generator
+  release_version                 = var.release_version
   docker_container_port           = var.docker_container_port
 
   log_level       = var.log_level

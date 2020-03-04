@@ -26,7 +26,7 @@ locals {
       external_top_level_domain       : var.external_top_level_domain
       log_level                       : var.log_level
       docker_registry                 : var.docker_registry
-      app_version_test_data_generator : var.app_version_test_data_generator
+      release_version                 : var.release_version
       docker_container_port           : var.docker_container_port
     },
       var.secrets_arn_map

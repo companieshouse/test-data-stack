@@ -3,7 +3,7 @@ variable "name_prefix" {}
 variable "environment" {}
 
 variable "docker_registry" {}
-variable "app_version_test_data_generator" {}
+variable "release_version" {}
 variable "docker_container_port" {}
 
 variable "application_ids" {}
