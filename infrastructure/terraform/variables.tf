@@ -30,7 +30,7 @@ variable "environment" {}
 variable "deploy_to" {}
 
 variable "docker_registry" {} # This value passed in from CI pipeline
-variable "release_version" {
+variable "release_version" {}
 
 variable "docker_container_port" {
   default = "10000"
