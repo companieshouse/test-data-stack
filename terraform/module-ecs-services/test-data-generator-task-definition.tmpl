@@ -2,7 +2,8 @@
     {
         "environment": [
             { "name": "BARCODE_SERVICE_URL", "value": "http://barcode${external_top_level_domain}" },
-            { "name": "LOGLEVEL", "value": "${log_level}" }
+            { "name": "LOGLEVEL", "value": "${log_level}" },
+            { "name": "PORT", "value": "${docker_container_port}" }
         ],
         "name": "test-data-generator",
         "image": "${docker_registry}/test-data-generator:${release_version}",
