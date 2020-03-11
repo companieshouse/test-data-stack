@@ -27,11 +27,6 @@ variable "dev_management_cidrs" {
   default = ["10.50.17.0/24","10.50.19.0/24","10.50.21.0/24"]
 }
 
-# VPC ID read from terraform remote state.
-variable "vpc_id" {
-  default     = ""
-}
-
 variable "environment" {}
 variable "deploy_to" {}
 
