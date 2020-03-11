@@ -12,7 +12,9 @@ variable "remote_state_bucket" {
 }
 
 variable "state_prefix" {}
-variable "workspace_key_prefix" {}
+variable "workspace_key_prefix" {
+    default = "test-data-generator-stack"
+}
 variable "state_file_name" {}
 
 # Required for access from existing Concourse instances
