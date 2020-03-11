@@ -1,4 +1,6 @@
-variable "aws_region" {}
+variable "aws_region" {
+  default = "eu-west-2"
+}
 variable "aws_profile" {
   default = "development-eu-west-2"
 }
