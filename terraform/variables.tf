@@ -15,7 +15,9 @@ variable "state_prefix" {}
 variable "workspace_key_prefix" {
     default = "test-data-generator-stack"
 }
-variable "state_file_name" {}
+variable "state_file_name" {
+    default = "test-data-generator.tfstate"
+}
 
 # Required for access from existing Concourse instances
 variable "dev_management_cidrs" {
