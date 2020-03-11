@@ -35,8 +35,8 @@ variable "vpc_id" {
 variable "environment" {}
 variable "deploy_to" {}
 
-variable "docker_registry" {} # This value passed in from CI pipeline
-variable "release_version" {} # This value passed in from CI pipeline
+variable "docker_registry" {}
+variable "release_version" {}
 
 variable "docker_container_port" {
   default = "10000"
@@ -84,8 +84,8 @@ variable "log_level" {
 }
 
 # Vault credentials read from environment
-variable "vault_username" {} # This value passed in from CI pipeline
-variable "vault_password" {} # This value passed in from CI pipeline
+variable "vault_username" {}
+variable "vault_password" {}
 
 //---------------- START: Environment Secrets for services ---------------------
 
