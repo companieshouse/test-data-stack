@@ -13,7 +13,6 @@ ec2_instance_type = "t3.medium"
 # Certificate for https access through ALB
 ssl_certificate_id = "arn:aws:acm:eu-west-2:169942020521:certificate/189427a3-3662-41ca-85d8-e1f42b6ea07e"
 zone_id = "Z2KSI4Z5ZN9NT0"
-#top_level_domain = ".spartan1.aws.chdev.org"
 external_top_level_domain = ".spartan1.aws.chdev.org"
 internal_top_level_domain = "-spartan1.development.aws.internal"
 
