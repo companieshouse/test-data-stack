@@ -7,7 +7,6 @@ state_prefix = "env:/staging"
 state_file_name = "test-data-generator.tfstate"
 
 aws_profile = "staging-eu-west-2"
-ec2_instance_type = "t3.medium"
 
 # Certificate for https access through ALB
 ssl_certificate_id = "arn:aws:iam::250991044064:server-certificate/Preprod2020"

@@ -7,7 +7,6 @@ state_prefix = "env:/development"
 state_file_name = "test-data-generator.tfstate"
 
 aws_profile = "development-eu-west-2"
-ec2_instance_type = "t3.medium"
 
 # Certificate for https access through ALB
 ssl_certificate_id = "arn:aws:acm:eu-west-2:169942020521:certificate/189427a3-3662-41ca-85d8-e1f42b6ea07e"
