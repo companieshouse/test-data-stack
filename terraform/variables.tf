@@ -21,12 +21,6 @@ variable "state_file_name" {
     default = "test-data-generator.tfstate"
 }
 
-# Required for access from existing Concourse instances
-variable "dev_management_cidrs" {
-  type    = list(string)
-  default = ["10.50.17.0/24","10.50.19.0/24","10.50.21.0/24"]
-}
-
 variable "environment" {}
 variable "deploy_to" {}
 

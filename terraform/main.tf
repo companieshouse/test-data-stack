@@ -39,6 +39,19 @@ locals {
   vpn_cidrs      = values(data.terraform_remote_state.networks_common_infra.outputs.vpn_cidrs)
 }
 
+# Remote state data source for Ireland, required for Concourse management CIDRs
+data "terraform_remote_state" "networks_common_infra_ireland" {
+  backend = "s3"
+  config = {
+    bucket = "development-eu-west-1.terraform-state.ch.gov.uk"
+    key    = "aws-common-infrastructure-terraform/common/networking.tfstate"
+    region = "eu-west-1"
+  }
+}
+locals {
+  management_private_subnet_cidrs = values(data.terraform_remote_state.networks_common_infra_ireland.outputs.management_private_subnet_cidrs)
+}
+
 # Configure the remote state data source to acquire configuration
 # created through the code in the services-stack-configs stack in the
 # aws-common-infrastructure-terraform repo.
@@ -112,7 +125,7 @@ module "ecs-services" {
   external_top_level_domain       = var.external_top_level_domain
   internal_top_level_domain       = var.internal_top_level_domain
   application_ids                 = local.application_ids
-  web_access_cidrs                = concat(local.internal_cidrs,local.vpn_cidrs,flatten([split(",",local.application_cidrs),var.dev_management_cidrs]))
+  web_access_cidrs                = concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs))
   ecs_cluster_id                  = module.ecs-cluster.ecs_cluster_id
   task_execution_role_arn         = module.ecs-cluster.ecs_task_execution_role_arn
   docker_registry                 = var.docker_registry
