@@ -72,7 +72,7 @@ locals {
 }
 
 module "ecs-cluster" {
-  source = "git::git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.0"
+  source = "git::git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.1"
 
   stack_name  = local.stack_name
   name_prefix = local.name_prefix
@@ -85,7 +85,7 @@ module "ecs-cluster" {
   asg_max_instance_count     = var.asg_max_instance_count
   asg_min_instance_count     = var.asg_min_instance_count
   asg_desired_instance_count = var.asg_desired_instance_count
-  application_subnet_ids     = local.application_ids
+  subnet_ids                 = local.application_ids
 }
 
 module "secrets" {
