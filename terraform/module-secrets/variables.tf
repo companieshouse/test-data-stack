@@ -1,14 +1,25 @@
-variable "stack_name" {}
-variable "name_prefix" {}
-variable "environment" {}
-
-variable "kms_key_id" {}
-
-//---------------- START: Environment Secrets for services ---------------------
-
-variable "secrets" {
-  description = "The secrets to be added to Parameter Store"
-  type = map
+# Environment
+variable "environment" {
+  type        = string
+  description = "The environment name, defined in envrionments vars."
 }
 
-//---------------- END: Environment Secrets for services ---------------------
+# ECS Service
+variable "stack_name" {
+  type        = string
+  description = "The name of the Stack / ECS Cluster."
+}
+variable "name_prefix" {
+  type        = string
+  description = "The name prefix to be used for parameter name spacing."
+}
+
+# Secrets
+variable "secrets" {
+  description = "The secrets to be added to Parameter Store."
+  type = map
+}
+variable "kms_key_id" {
+  type        = string
+  description = "The KMS key alias for encrypting the values for Parameter Store. "
+}
