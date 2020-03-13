@@ -16,8 +16,8 @@ variable "name_prefix" {
 
 # Secrets
 variable "secrets" {
+  type        = map
   description = "The secrets to be added to Parameter Store."
-  type = map
 }
 variable "kms_key_id" {
   type        = string
