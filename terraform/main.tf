@@ -92,13 +92,13 @@ module "ecs-cluster" {
   environment = var.environment
 
   vpc_id                     = local.vpc_id
+  subnet_ids                 = local.application_ids
   ec2_key_pair_name          = var.ec2_key_pair_name
   ec2_instance_type          = var.ec2_instance_type
   ec2_image_id               = var.ec2_image_id
   asg_max_instance_count     = var.asg_max_instance_count
   asg_min_instance_count     = var.asg_min_instance_count
   asg_desired_instance_count = var.asg_desired_instance_count
-  subnet_ids                 = local.application_ids
 }
 
 module "secrets" {
