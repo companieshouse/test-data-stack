@@ -1,86 +1,129 @@
+# Environment
+variable "environment" {
+  type        = string
+  description = "The environment name, defined in envrionments vars."
+}
 variable "aws_region" {
-  default = "eu-west-2"
+  default     = "eu-west-2"
+  type        = string
+  description = "The AWS region for deployment."
 }
 variable "aws_profile" {
-  default = "development-eu-west-2"
+  default     = "development-eu-west-2"
+  type        = string
+  description = "The AWS profile to use for deployment."
 }
 
+# Terraform
 variable "aws_bucket" {
-  description = "The bucket used to store the terraform state files"
+  type        = string
+  description = "The bucket used to store the current terraform state files"
 }
-
-variable "remote_state_bucket" {
-  description = "The bucket used to store the remote state files"
-}
-
-variable "state_prefix" {}
 variable "workspace_key_prefix" {
-    default = "test-data-generator-stack"
+  default     = "test-data-generator-stack"
+  type        = string
+  description = "The bucket prefix used with the aws_bucket files."
 }
-variable "state_file_name" {
-    default = "test-data-generator.tfstate"
+variable "remote_state_bucket" {
+  type        = string
+  description = "Alternative bucket used to store the remote state files from ch-service-terraform"
+}
+variable "state_prefix" {
+  type        = string
+  description = "The bucket prefix used with the remote_state_bucket files."
+}
+variable "deploy_to" {
+  type        = string
+  description = "Bucket namespace used with remote_state_bucket and state_prefix."
 }
 
-variable "environment" {}
-variable "deploy_to" {}
-
-variable "docker_registry" {}
-variable "release_version" {}
-
+# Docker Container
+variable "docker_registry" {
+  type        = string
+  description = "The FQDN of the Docker registry."
+}
+variable "release_version" {
+  type        = string
+  description = "The github release version used here for Docker image tagging."
+}
 variable "docker_container_port" {
-  default = "10000"
+  default     = "10000"
+  type        = string
+  description = "The port number on the container bound to the assigned host port."
+}
+variable "log_level" {
+  default     = "INFO"
+  type        = string
+  description = "The log level for services to use: TRACE, DEBUG, INFO or ERROR"
 }
 
+# EC2
 variable "ec2_key_pair_name" {
-  description = "The name for the cluster."
+  type        = string
+  description = "The key pair for SSH access to ec2 instances in the clusters."
 }
-
 variable "ec2_instance_type" {
-  description = "The name for the autoscaling group for the cluster."
   default     = "t3.medium"
+  type        = string
+  description = "The instance type for ec2 instances in the clusters."
 }
-
 variable "ec2_image_id" {
-  description = "The name for the autoscaling group for the ECS cluster."
   default     = "ami-007ef488b3574da6b" # ECS optimized Linux in London created 16/10/2019
+  type        = string
+  description = "The machine image name for the ECS cluster launch configuration."
 }
 
+# Auto-scaling Group
 variable "asg_max_instance_count" {
-  description = "The name for the autoscaling group for the cluster."
   default     = 1
+  type        = number
+  description = "The maximum allowed number of instances in the autoscaling group for the cluster."
 }
-
 variable "asg_min_instance_count" {
-  description = "The name for the autoscaling group for the cluster."
   default     = 1
+  type        = number
+  description = "The minimum allowed number of instances in the autoscaling group for the cluster."
 }
-
 variable "asg_desired_instance_count" {
-  description = "The name for the autoscaling group for the cluster."
   default     = 1
+  type        = number
+  description = "The desired number of instances in the autoscaling group for the cluster. Must fall within the min/max instance count range."
 }
 
-variable "ssl_certificate_id" {}
+# Certificates
+variable "ssl_certificate_id" {
+  type        = string
+  description = "The ARN of the certificate for https access through the ALB."
+}
+
+# DNS
 variable "zone_id" {
   default = "" # default of empty string is used as conditional when creating route53 records i.e. if no zone_id provided then no route53
+  type        = string
+  description = "The ID of the hosted zone to contain the Route 53 record."
 }
-variable "external_top_level_domain" {}
-variable "internal_top_level_domain" {}
-
-variable "log_level" {
-  description = "The log level for services to use: TRACE, DEBUG, INFO or ERROR"
-  default     = "INFO"
+variable "external_top_level_domain" {
+  type        = string
+  description = "The type levelel of the DNS domain for external access."
+}
+variable "internal_top_level_domain" {
+  type        = string
+  description = "The type levelel of the DNS domain for internal access."
 }
 
-# Vault credentials read from environment
-variable "vault_username" {}
-variable "vault_password" {}
+# Vault
+variable "vault_username" {
+  type        = string
+  description = "The username used by the Vault provider."
+}
+variable "vault_password" {
+  type        = string
+  description = "The password used by the Vault provider."
+}
 
-//---------------- START: Environment Secrets for services ---------------------
-
+# Secrets
 variable "vault_secrets" {
-  default = [ "secret-mongo-url" ]
   type = list(string)
+  description = "A list of the secrets to be added to Parameter Store."
+  default = [ "secret-mongo-url" ]
 }
-
-//---------------- END: Environment Secrets for services ---------------------
