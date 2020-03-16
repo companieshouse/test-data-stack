@@ -20,7 +20,6 @@ variable "aws_bucket" {
   description = "The bucket used to store the current terraform state files"
 }
 variable "workspace_key_prefix" {
-  default     = "test-data-generator-stack"
   type        = string
   description = "The bucket prefix used with the aws_bucket files."
 }
