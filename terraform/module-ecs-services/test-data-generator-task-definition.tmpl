@@ -3,14 +3,14 @@
         "environment": [
             { "name": "BARCODE_SERVICE_URL", "value": "http://barcode${external_top_level_domain}" },
             { "name": "LOGLEVEL", "value": "${log_level}" },
-            { "name": "PORT", "value": "${docker_container_port}" }
+            { "name": "PORT", "value": "${application_port}" }
         ],
         "name": "test-data-generator",
         "image": "${docker_registry}/test-data-generator:${release_version}",
         "cpu": 1,
         "memory": 512,
         "portMappings": [{
-            "containerPort": ${docker_container_port},
+            "containerPort": ${application_port},
             "hostPort": 0
         }],
         "logConfiguration": {

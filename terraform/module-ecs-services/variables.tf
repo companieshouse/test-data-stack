@@ -59,7 +59,7 @@ variable "release_version" {
   type        = string
   description = "The github release version used here for Docker image tagging."
 }
-variable "docker_container_port" {
+variable "application_port" {
   type        = string
   description = "The port number on the container bound to the assigned host port."
 }

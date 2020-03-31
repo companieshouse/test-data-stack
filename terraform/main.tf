@@ -80,9 +80,9 @@ data "vault_generic_secret" "secrets" {
 
 locals {
   # stack name is hardcoded here in main.tf for this stack. It should not be overridden per env
-  stack_name  = "test-data-generator"
-  name_prefix = "${local.stack_name}-${var.environment}"
-  docker_container_port = "10000"
+  stack_name       = "test-data-generator"
+  name_prefix      = "${local.stack_name}-${var.environment}"
+  application_port = "10000"
 }
 
 module "ecs-cluster" {
@@ -131,7 +131,7 @@ module "ecs-services" {
   task_execution_role_arn         = module.ecs-cluster.ecs_task_execution_role_arn
   docker_registry                 = var.docker_registry
   release_version                 = var.release_version
-  docker_container_port           = local.docker_container_port
+  application_port                = local.application_port
 
   log_level       = var.log_level
   secrets_arn_map = module.secrets.secrets_arn_map
