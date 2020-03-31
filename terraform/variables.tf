@@ -45,11 +45,6 @@ variable "release_version" {
   type        = string
   description = "The github release version used here for Docker image tagging."
 }
-variable "docker_container_port" {
-  default     = "10000"
-  type        = string
-  description = "The port number on the container bound to the assigned host port."
-}
 variable "log_level" {
   default     = "INFO"
   type        = string
