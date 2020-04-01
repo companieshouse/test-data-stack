@@ -1,16 +1,16 @@
 [
     {
         "environment": [
-            { "name": "BARCODE_SERVICE_URL", "value": "https://barcode.${environment}.development.aws.chdev.org" },
-            { "name": "MONGODB_URL", "value": "mongodb://mongo-db1-${environment}.development.aws.internal:27017" },
-            { "name": "LOGLEVEL", "value": "TRACE" }
+            { "name": "BARCODE_SERVICE_URL", "value": "http://barcode${external_top_level_domain}" },
+            { "name": "LOGLEVEL", "value": "${log_level}" },
+            { "name": "PORT", "value": "${application_port}" }
         ],
         "name": "test-data-generator",
-        "image": "169942020521.dkr.ecr.eu-west-2.amazonaws.com/test-data-generator:latest",
+        "image": "${docker_registry}/test-data-generator:${release_version}",
         "cpu": 1,
         "memory": 512,
         "portMappings": [{
-            "containerPort": 10000,
+            "containerPort": ${application_port},
             "hostPort": 0
         }],
         "logConfiguration": {
@@ -23,8 +23,7 @@
             }
         },
         "secrets": [
-            { "name": "MONGODB_USERNAME", "valueFrom": "${secret_mongo_user_name}" },
-            { "name": "MONGODB_PASSWORD", "valueFrom": "${secret_mongo_password}" }
+            { "name": "MONGODB_URL", "valueFrom": "${secret-mongo-url}" }
         ],
         "essential": true
     }
