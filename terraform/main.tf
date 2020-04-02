@@ -1,6 +1,9 @@
 provider "aws" {
   region  = var.aws_region
   version = "~> 2.32.0"
+  assume_role {
+    role_arn     = "arn:aws:iam::169942020521:role/getest_concourse_role"
+  }
 }
 
 terraform {
