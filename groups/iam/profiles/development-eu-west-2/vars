@@ -1,0 +1,16 @@
+# IAM roles
+iam_roles = {
+  test-data-generator-stack-terraform-role = "test-data-generator-stack-terraform-role"
+}
+
+# IAM role policies
+iam_role_policies = {
+  test-data-generator-stack-terraform-plan = "test-data-generator-stack-terraform-role"
+  test-data-generator-stack-terraform-apply = "test-data-generator-stack-terraform-role"
+  test-data-generator-stack-terraform-destroy = "test-data-generator-stack-terraform-role"
+}
+
+# AWS managed policies
+iam_role_aws_policies = {
+  AmazonEC2ContainerRegistryReadOnly = "test-data-generator-stack-terraform-role"
+}
