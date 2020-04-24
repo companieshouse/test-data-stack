@@ -2,7 +2,7 @@ provider "aws" {
   region  = var.aws_region
   version = "~> 2.32.0"
   assume_role {
-    role_arn     = "arn:aws:iam::169942020521:role/test-data-generator-stack-terraform-role"
+    role_arn = "arn:aws:iam::${local.aws_account_id}:role/${local.assume_role_arn}"
   }
 }
 
@@ -79,6 +79,17 @@ provider "vault" {
 data "vault_generic_secret" "secrets" {
   for_each = toset(var.vault_secrets)
   path = "applications/${var.aws_profile}/${var.environment}/${local.stack_name}/${each.value}"
+}
+
+data "vault_generic_secret" "aws_account_id" {
+  path = "applications/${var.aws_profile}/aws_account_id"
+}
+data "vault_generic_secret" "assume_role_arn" {
+  path = "applications/${var.aws_profile}/${var.environment}/${local.stack_name}/assume_role_arn"
+}
+locals {
+  aws_account_id = data.vault_generic_secret.aws_account_id.data["value"]
+  assume_role_arn = data.vault_generic_secret.assume_role_arn.data["value"]
 }
 
 locals {
