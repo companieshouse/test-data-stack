@@ -1,4 +1,5 @@
 resource "aws_security_group" "internal-service-sg" {
+  name        = "${var.name_prefix}-internal-service-sg"
   description = "Security group for internal service albs"
   vpc_id      = var.vpc_id
 
