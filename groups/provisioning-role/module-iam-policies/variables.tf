@@ -12,5 +12,5 @@ variable "iam_role_policies" {
 variable "policy_description" {
   type        = string
   description = "A description of TF source to add to each policy created."
-  default     = "Provisioned with test-data-generator-stack/groups/iam"
+  default     = "Provisioned with test-data-generator-stack/groups/provisioning-role"
 }
