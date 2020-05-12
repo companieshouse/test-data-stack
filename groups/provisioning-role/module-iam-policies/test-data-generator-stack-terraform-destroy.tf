@@ -27,7 +27,6 @@ data "aws_iam_policy_document" "test_data_generator_stack_terraform_destroy" {
       "arn:aws:elasticloadbalancing:eu-west-2:${var.aws_account_id}:loadbalancer/app/test-data-devops1-lb/*",
       "arn:aws:elasticloadbalancing:eu-west-2:${var.aws_account_id}:loadbalancer/net/test-data-devops1-lb/*",
       "arn:aws:elasticloadbalancing:eu-west-2:${var.aws_account_id}:targetgroup/devops1-test-data-generator/*",
-      "arn:aws:ec2:eu-west-2:${var.aws_account_id}:security-group/*",
       "arn:aws:iam::${var.aws_account_id}:instance-profile/test-data-generator-devops1-ecs-instance-profile",
     ]
     actions = [
@@ -43,11 +42,28 @@ data "aws_iam_policy_document" "test_data_generator_stack_terraform_destroy" {
       "autoscaling:DeleteAutoScalingGroup",
       "elasticloadbalancing:DeleteListener",
       "iam:DeleteInstanceProfile",
-      "ec2:DeleteSecurityGroup",
       "iam:RemoveRoleFromInstanceProfile",
       "elasticloadbalancing:DeleteLoadBalancer",
       "elasticloadbalancing:DeleteTargetGroup",
     ]
   }
-  
+
+  statement {
+    sid    = "DestroyPolicyListedResourcesWithConditions"
+    effect = "Allow"
+    resources = [
+      "arn:aws:ec2:eu-west-2:${var.aws_account_id}:security-group/*"
+    ]
+    actions = [
+      "ec2:DeleteSecurityGroup",
+    ]
+    condition {
+      test     = "StringLikeIfExists"
+      variable = "ec2:ResourceTag/Name"
+      values = [
+        "test-data-generator-*-internal-service-sg"
+      ]
+    }
+  }
+
 }
