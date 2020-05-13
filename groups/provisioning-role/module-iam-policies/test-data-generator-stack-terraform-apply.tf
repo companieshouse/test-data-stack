@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "test_data_generator_stack_terraform_apply" {
+data "aws_iam_policy_document" "apply" {
 
   statement {
     sid       = "ApplyPolicyAllResources"

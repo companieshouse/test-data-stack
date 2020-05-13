@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "test_data_generator_stack_terraform_plan" {
+data "aws_iam_policy_document" "plan" {
 
   statement {
     sid       = "PlanPolicyAllResources"

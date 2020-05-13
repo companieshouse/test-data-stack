@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "test_data_generator_stack_terraform_destroy" {
+data "aws_iam_policy_document" "destroy" {
 
   statement {
     sid       = "DestroyPolicyAllResources"
