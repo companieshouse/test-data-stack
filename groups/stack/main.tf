@@ -30,7 +30,7 @@ data "terraform_remote_state" "networks_common_infra" {
   backend = "s3"
   config = {
     bucket = var.aws_bucket
-    key    = "aws-common-infrastructure-terraform/common/networking.tfstate"
+    key    = "aws-common-infrastructure-terraform/common-${var.aws_region}/networking.tfstate"
     region = var.aws_region
   }
 }
@@ -44,7 +44,7 @@ data "terraform_remote_state" "networks_common_infra_ireland" {
   backend = "s3"
   config = {
     bucket = "development-eu-west-1.terraform-state.ch.gov.uk"
-    key    = "aws-common-infrastructure-terraform/common/networking.tfstate"
+    key    = "aws-common-infrastructure-terraform/common-${var.aws_region}/networking.tfstate"
     region = "eu-west-1"
   }
 }
@@ -59,7 +59,7 @@ data "terraform_remote_state" "services-stack-configs" {
   backend = "s3"
   config = {
     bucket = var.aws_bucket # aws-common-infrastructure-terraform repo uses the same remote state bucket
-    key    = "aws-common-infrastructure-terraform/common/services-stack-configs.tfstate"
+    key    = "aws-common-infrastructure-terraform/common-${var.aws_region}/services-stack-configs.tfstate"
     region = var.aws_region
   }
 }
