@@ -31,6 +31,10 @@ variable "state_prefix" {
   type        = string
   description = "The bucket prefix used with the remote_state_bucket files."
 }
+variable "state_file_name" {
+  type        = string
+  description = "The file name of the remote_state file."
+}
 variable "deploy_to" {
   type        = string
   description = "Bucket namespace used with remote_state_bucket and state_prefix."
