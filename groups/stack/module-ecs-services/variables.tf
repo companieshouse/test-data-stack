@@ -72,11 +72,13 @@ variable "secrets_arn_map" {
 
 # Services
 
+# test-data-generator
 variable "tdg_release_version" {
   type        = string
-  description = "The github release version used here for Docker image tagging."
+  description = "The release version for the test-data-generator service."
 }
 variable "tdg_application_port" {
   type        = string
-  description = "The port number on the container bound to the assigned host port."
+  description = "The port number for the test-data-generator service."
+}
 }
