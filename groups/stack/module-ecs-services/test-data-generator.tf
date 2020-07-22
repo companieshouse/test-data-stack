@@ -10,7 +10,7 @@ resource "aws_ecs_service" "test-data-generator-ecs-service" {
 
   depends_on = [
     "aws_lb_target_group.test-data-generator-target_group",
-    "aws_lb.test-data-generator-lb"
+    "aws_lb.test-data-lb"
   ]
 
   load_balancer {
