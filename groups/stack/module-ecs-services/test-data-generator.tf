@@ -64,9 +64,6 @@ resource "aws_lb_listener_rule" "test-data-generator" {
     target_group_arn = aws_lb_target_group.test-data-generator-target_group.arn
   }
   condition {
-    # path_pattern {
-    #   values = ["/test-data/*"]
-    # }
     field  = "path-pattern"
     values = ["/test-data/*"]
   }
