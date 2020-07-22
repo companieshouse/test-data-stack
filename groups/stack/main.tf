@@ -113,7 +113,6 @@ module "secrets" {
 module "ecs-stack" {
   source = "./module-ecs-stack"
 
-  web_access_cidrs                = concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs))
   stack_name                = local.stack_name
   name_prefix               = local.name_prefix
   environment               = var.environment
@@ -123,6 +122,7 @@ module "ecs-stack" {
   external_top_level_domain = var.external_top_level_domain
   internal_top_level_domain = var.internal_top_level_domain
   subnet_ids                = local.application_ids
+  web_access_cidrs          = concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs))
 }
 
 module "ecs-services" {
