@@ -1,5 +1,5 @@
 resource "aws_lb" "test-data-lb" {
-  name            = "test-data-${var.environment}-lb"
+  name            = "${var.stack_name}-${var.environment}-lb"
   security_groups = [aws_security_group.internal-service-sg.id]
   subnets         = flatten([split(",", var.subnet_ids)])
   internal        = true
@@ -11,7 +11,6 @@ resource "aws_lb_listener" "test-data-lb-listener" {
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
   certificate_arn   = var.ssl_certificate_id
-
   default_action {
     type             = "fixed-response"
     fixed_response {
@@ -24,7 +23,6 @@ resource "aws_lb_listener" "test-data-lb-listener" {
 
 resource "aws_route53_record" "test-data-generator-r53-record" {
   count   = "${var.zone_id == "" ? 0 : 1}" # zone_id defaults to empty string giving count = 0 i.e. not route 53 record
-
   zone_id = var.zone_id
   name    = "test-data${var.external_top_level_domain}"
   type    = "A"

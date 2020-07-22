@@ -112,21 +112,35 @@ module "secrets" {
   secrets     = data.vault_generic_secret.secrets
 }
 
-module "ecs-services" {
-  source = "./module-ecs-services"
+module "ecs-stack" {
+  source = "./module-ecs-stack"
 
   stack_name  = local.stack_name
   name_prefix = local.name_prefix
   environment = var.environment
 
   vpc_id                          = local.vpc_id
-  aws_region                      = var.aws_region
   ssl_certificate_id              = var.ssl_certificate_id
   zone_id                         = var.zone_id
   external_top_level_domain       = var.external_top_level_domain
   internal_top_level_domain       = var.internal_top_level_domain
   web_access_cidrs                = concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs))
   subnet_ids                      = local.application_ids
+
+module "ecs-services" {
+  source = "./module-ecs-services"
+
+  name_prefix = local.name_prefix
+  environment = var.environment
+
+  test-data-lb-arn = module.ecs-stack.test-data-lb-listener-arn
+  test-data-lb-listener-arn = module.ecs-stack.test-data-lb-listener-arn
+
+  vpc_id                          = local.vpc_id
+  aws_region                      = var.aws_region
+  ssl_certificate_id              = var.ssl_certificate_id
+  external_top_level_domain       = var.external_top_level_domain
+  internal_top_level_domain       = var.internal_top_level_domain
   ecs_cluster_id                  = module.ecs-cluster.ecs_cluster_id
   task_execution_role_arn         = module.ecs-cluster.ecs_task_execution_role_arn
   docker_registry                 = var.docker_registry
