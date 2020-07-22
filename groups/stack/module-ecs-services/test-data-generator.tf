@@ -7,12 +7,7 @@ resource "aws_ecs_service" "test-data-generator-ecs-service" {
   cluster         = var.ecs_cluster_id
   task_definition = aws_ecs_task_definition.test-data-generator-task-definition.arn
   desired_count   = 1
-
-  depends_on = [
-    "aws_lb_target_group.test-data-generator-target_group",
-    "aws_lb.test-data-lb"
-  ]
-
+  depends_on      = ["aws_lb.test-data-lb"]
   load_balancer {
     target_group_arn = aws_lb_target_group.test-data-generator-target_group.arn
     container_port   = var.application_port
