@@ -1,7 +1,7 @@
 resource "aws_lb" "test-data-lb" {
   name            = "test-data-${var.environment}-lb"
   security_groups = [aws_security_group.internal-service-sg.id]
-  subnets         = flatten([split(",", var.application_ids)])
+  subnets         = flatten([split(",", var.subnet_ids)])
   internal        = true
 }
 

@@ -125,8 +125,8 @@ module "ecs-services" {
   zone_id                         = var.zone_id
   external_top_level_domain       = var.external_top_level_domain
   internal_top_level_domain       = var.internal_top_level_domain
-  application_ids                 = local.application_ids
   web_access_cidrs                = concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs))
+  subnet_ids                      = local.application_ids
   ecs_cluster_id                  = module.ecs-cluster.ecs_cluster_id
   task_execution_role_arn         = module.ecs-cluster.ecs_task_execution_role_arn
   docker_registry                 = var.docker_registry

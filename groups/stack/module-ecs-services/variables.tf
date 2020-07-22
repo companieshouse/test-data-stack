@@ -9,7 +9,7 @@ variable "aws_region" {
 }
 
 # Networking
-variable "application_ids" {
+variable "subnet_ids" {
   type        = string
   description = "Subnet IDs of application subnets from aws-mm-networks remote state."
 }
