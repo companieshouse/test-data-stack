@@ -74,13 +74,13 @@ provider "vault" {
 }
 
 data "vault_generic_secret" "secrets" {
-  for_each = toset(var.vault_secrets)
-  path = "applications/${var.aws_profile}/${var.environment}/${local.stack_name}/${each.value}"
+  path = "applications/${var.aws_profile}/${var.environment}/${local.stack_fullname}"
 }
 
 locals {
   # stack name is hardcoded here in main.tf for this stack. It should not be overridden per env
   stack_name       = "test-data"
+  stack_fullname   = "${local.stack_name}-stack"
   name_prefix      = "${local.stack_name}-${var.environment}"
 }
 
@@ -107,7 +107,7 @@ module "secrets" {
   name_prefix = local.name_prefix
   environment = var.environment
   kms_key_id  = data.terraform_remote_state.services-stack-configs.outputs.services_stack_configs_kms_key_id
-  secrets     = data.vault_generic_secret.secrets
+  secrets     = data.vault_generic_secret.secrets.data
 }
 
 module "ecs-stack" {

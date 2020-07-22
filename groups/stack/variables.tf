@@ -107,13 +107,6 @@ variable "vault_password" {
   description = "The password used by the Vault provider."
 }
 
-# Secrets
-variable "vault_secrets" {
-  type        = list(string)
-  description = "A list of the secrets to be added to Parameter Store."
-  default     = [ "secret-mongo-url" ]
-}
-
 # ------------------------------------------------------------------------------
 # Services
 # ------------------------------------------------------------------------------
