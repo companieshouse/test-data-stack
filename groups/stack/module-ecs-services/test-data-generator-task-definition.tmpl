@@ -5,8 +5,8 @@
             { "name": "LOGLEVEL", "value": "${log_level}" },
             { "name": "PORT", "value": "${application_port}" }
         ],
-        "name": "test-data-generator",
-        "image": "${docker_registry}/test-data-generator:${release_version}",
+        "name": "${service_name}",
+        "image": "${docker_registry}/${service_name}:${release_version}",
         "cpu": 1,
         "memory": 512,
         "portMappings": [{
@@ -18,7 +18,7 @@
             "options": {
                 "awslogs-create-group": "true",
                 "awslogs-region": "${aws_region}",
-                "awslogs-group": "/ecs/${name_prefix}/test-data-generator",
+                "awslogs-group": "/ecs/${name_prefix}/${service_name}",
                 "awslogs-stream-prefix": "ecs"
             }
         },

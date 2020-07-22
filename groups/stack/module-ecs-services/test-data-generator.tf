@@ -18,14 +18,15 @@ resource "aws_ecs_service" "test-data-generator-ecs-service" {
 locals {
   definition = merge(
     {
-      environment                     : var.environment
-      name_prefix                     : var.name_prefix
-      aws_region                      : var.aws_region
-      external_top_level_domain       : var.external_top_level_domain
-      log_level                       : var.log_level
-      docker_registry                 : var.docker_registry
-      release_version                 : var.tdg_release_version
-      application_port                : var.tdg_application_port
+      service_name               : local.service_name
+      environment                : var.environment
+      name_prefix                : var.name_prefix
+      aws_region                 : var.aws_region
+      external_top_level_domain  : var.external_top_level_domain
+      log_level                  : var.log_level
+      docker_registry            : var.docker_registry
+      release_version            : var.tdg_release_version
+      application_port           : var.tdg_application_port
     },
       var.secrets_arn_map
   )
