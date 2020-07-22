@@ -141,10 +141,9 @@ module "ecs-services" {
   ecs_cluster_id            = module.ecs-cluster.ecs_cluster_id
   task_execution_role_arn   = module.ecs-cluster.ecs_task_execution_role_arn
   docker_registry           = var.docker_registry
-  # service variables
-  # test-data-generator
+  secrets_arn_map           = module.secrets.secrets_arn_map
+  # test-data-generator variables
   release_version           = var.release_version
   application_port          = "10000"
-  log_level                 = "DEBUG"
-  secrets_arn_map           = module.secrets.secrets_arn_map
+  log_level                 = var.log_level
 }
