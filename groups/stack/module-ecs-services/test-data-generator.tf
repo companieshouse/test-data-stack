@@ -1,6 +1,9 @@
+locals {
+  service_name = "test-data-generator"
+}
 
 resource "aws_ecs_service" "test-data-generator-ecs-service" {
-  name            = "${var.environment}-test-data-generator"
+  name            = "${var.environment}-${local.service_name}"
   cluster         = var.ecs_cluster_id
   task_definition = aws_ecs_task_definition.test-data-generator-task-definition.arn
   desired_count   = 1
@@ -13,7 +16,7 @@ resource "aws_ecs_service" "test-data-generator-ecs-service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.test-data-generator-target_group.arn
     container_port   = var.application_port
-    container_name   = "test-data-generator"
+    container_name   = local.service_name
   }
 }
 
@@ -34,16 +37,16 @@ locals {
 }
 
 resource "aws_ecs_task_definition" "test-data-generator-task-definition" {
-  family             = "${var.environment}-test-data-generator"
+  family             = "${var.environment}-${local.service_name}"
   execution_role_arn = var.task_execution_role_arn
 
   container_definitions = templatefile(
-    "${path.module}/test-data-generator-task-definition.tmpl", local.definition
+    "${path.module}/${local.service_name}-task-definition.tmpl", local.definition
   )
 }
 
 resource "aws_lb_target_group" "test-data-generator-target_group" {
-  name     = "${var.environment}-test-data-generator"
+  name     = "${var.environment}-${local.service_name}"
   port     = var.application_port
   protocol = "HTTP"
   vpc_id   = var.vpc_id
