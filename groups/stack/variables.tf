@@ -109,16 +109,19 @@ variable "vault_password" {
 
 # Secrets
 variable "vault_secrets" {
-  type = list(string)
+  type        = list(string)
   description = "A list of the secrets to be added to Parameter Store."
-  default = [ "secret-mongo-url" ]
+  default     = [ "secret-mongo-url" ]
 }
 
 # ------------------------------------------------------------------------------
-
 # Services
+# ------------------------------------------------------------------------------
+
+# test-data-generator
 
 variable "tdg_release_version" {
   type        = string
-  description = "The github release version used here for Docker image tagging."
+  description = "The release version for the test-data-generator service."
+}
 }
