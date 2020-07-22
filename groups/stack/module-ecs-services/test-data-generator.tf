@@ -63,9 +63,19 @@ resource "aws_lb_target_group" "test-data-generator-target_group" {
   }
 }
 
+resource "aws_lb_listener_rule" "test-data-generator" {
+  listener_arn = aws_lb_listener.test-data-lb-listener.arn
+  priority     = 1
+  action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.test-data-generator-target_group.arn
   }
 
+  condition {
+    # path_pattern {
+    #   values = ["/test-data/*"]
+    # }
+    field  = "path-pattern"
+    values = ["/test-data/*"]
   }
 }
