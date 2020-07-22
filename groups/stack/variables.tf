@@ -37,10 +37,6 @@ variable "docker_registry" {
   type        = string
   description = "The FQDN of the Docker registry."
 }
-variable "release_version" {
-  type        = string
-  description = "The github release version used here for Docker image tagging."
-}
 variable "log_level" {
   default     = "INFO"
   type        = string
@@ -116,4 +112,13 @@ variable "vault_secrets" {
   type = list(string)
   description = "A list of the secrets to be added to Parameter Store."
   default = [ "secret-mongo-url" ]
+}
+
+# ------------------------------------------------------------------------------
+
+# Services
+
+variable "tdg_release_version" {
+  type        = string
+  description = "The github release version used here for Docker image tagging."
 }

@@ -47,14 +47,6 @@ variable "docker_registry" {
   type        = string
   description = "The FQDN of the Docker registry."
 }
-variable "release_version" {
-  type        = string
-  description = "The github release version used here for Docker image tagging."
-}
-variable "application_port" {
-  type        = string
-  description = "The port number on the container bound to the assigned host port."
-}
 variable "task_execution_role_arn" {
   type        = string
   description = "The ARN of the task execution role that the container can assume."
@@ -74,4 +66,17 @@ variable "ssl_certificate_id" {
 variable "secrets_arn_map" {
   type = map(string)
   description = "The ARNs for all secrets"
+}
+
+# ------------------------------------------------------------------------------
+
+# Services
+
+variable "tdg_release_version" {
+  type        = string
+  description = "The github release version used here for Docker image tagging."
+}
+variable "tdg_application_port" {
+  type        = string
+  description = "The port number on the container bound to the assigned host port."
 }

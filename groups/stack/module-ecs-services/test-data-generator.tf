@@ -10,7 +10,7 @@ resource "aws_ecs_service" "test-data-generator-ecs-service" {
   depends_on      = [var.test-data-lb-arn]
   load_balancer {
     target_group_arn = aws_lb_target_group.test-data-generator-target_group.arn
-    container_port   = var.application_port
+    container_port   = var.tdg_application_port
     container_name   = local.service_name
   }
 }
@@ -24,8 +24,8 @@ locals {
       external_top_level_domain       : var.external_top_level_domain
       log_level                       : var.log_level
       docker_registry                 : var.docker_registry
-      release_version                 : var.release_version
-      application_port                : var.application_port
+      release_version                 : var.tdg_release_version
+      application_port                : var.tdg_application_port
     },
       var.secrets_arn_map
   )
@@ -41,7 +41,7 @@ resource "aws_ecs_task_definition" "test-data-generator-task-definition" {
 
 resource "aws_lb_target_group" "test-data-generator-target_group" {
   name     = "${var.environment}-${local.service_name}"
-  port     = var.application_port
+  port     = var.tdg_application_port
   protocol = "HTTP"
   vpc_id   = var.vpc_id
   health_check {
