@@ -80,7 +80,7 @@ data "vault_generic_secret" "secrets" {
 
 locals {
   # stack name is hardcoded here in main.tf for this stack. It should not be overridden per env
-  stack_name       = "test-data-generator"
+  stack_name       = "test-data"
   name_prefix      = "${local.stack_name}-${var.environment}"
   application_port = "10000"
 }
