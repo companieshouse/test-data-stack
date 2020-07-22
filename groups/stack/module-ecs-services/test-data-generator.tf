@@ -32,9 +32,8 @@ locals {
 }
 
 resource "aws_ecs_task_definition" "test-data-generator-task-definition" {
-  family             = "${var.environment}-${local.service_name}"
-  execution_role_arn = var.task_execution_role_arn
-
+  family                = "${var.environment}-${local.service_name}"
+  execution_role_arn    = var.task_execution_role_arn
   container_definitions = templatefile(
     "${path.module}/${local.service_name}-task-definition.tmpl", local.definition
   )
@@ -45,7 +44,6 @@ resource "aws_lb_target_group" "test-data-generator-target_group" {
   port     = var.application_port
   protocol = "HTTP"
   vpc_id   = var.vpc_id
-
   health_check {
     healthy_threshold   = "5"
     unhealthy_threshold = "2"
@@ -65,7 +63,6 @@ resource "aws_lb_listener_rule" "test-data-generator" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.test-data-generator-target_group.arn
   }
-
   condition {
     # path_pattern {
     #   values = ["/test-data/*"]
