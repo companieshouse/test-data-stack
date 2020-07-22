@@ -1,17 +1,19 @@
 [
     {
         "environment": [
-            { "name": "BARCODE_SERVICE_URL", "value": "http://barcode${external_top_level_domain}" },
+            { "name": "PORT", "value": "${application_port}" },
             { "name": "LOGLEVEL", "value": "${log_level}" },
-            { "name": "PORT", "value": "${application_port}" }
+            { "name": "BARCODE_SERVICE_URL", "value": "http://barcode${external_top_level_domain}" }
         ],
         "name": "${service_name}",
         "image": "${docker_registry}/${service_name}:${release_version}",
         "cpu": 1,
         "memory": 512,
+        "mountPoints": [],
         "portMappings": [{
             "containerPort": ${application_port},
-            "hostPort": 0
+            "hostPort": 0,
+            "protocol": "tcp"
         }],
         "logConfiguration": {
             "logDriver": "awslogs",
@@ -25,6 +27,7 @@
         "secrets": [
             { "name": "MONGODB_URL", "valueFrom": "${test-data-generator-secret-mongo-url}" }
         ],
+        "volumesFrom": [],
         "essential": true
     }
 ]
