@@ -19,10 +19,6 @@ variable "aws_bucket" {
   type        = string
   description = "The bucket used to store the current terraform state files"
 }
-variable "workspace_key_prefix" {
-  type        = string
-  description = "The bucket prefix used with the aws_bucket files."
-}
 variable "remote_state_bucket" {
   type        = string
   description = "Alternative bucket used to store the remote state files from ch-service-terraform"

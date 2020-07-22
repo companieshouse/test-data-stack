@@ -3,7 +3,6 @@ remote_state_bucket = "ch-service-staging-terraform-state"
 environment = "staging"
 deploy_to = "staging"
 state_prefix = "env:/staging"
-workspace_key_prefix = "test-data-generator-stack"
 state_file_name = "test-data-generator.tfstate"
 aws_profile = "staging-eu-west-2"
 
