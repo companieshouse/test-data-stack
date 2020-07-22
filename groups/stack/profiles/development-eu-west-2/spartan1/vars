@@ -3,7 +3,6 @@ remote_state_bucket = "ch-development-terraform-state-london"
 environment = "spartan1"
 deploy_to = "development"
 state_prefix = "env:/development"
-state_file_name = "test-data-generator.tfstate"
 aws_profile = "development-eu-west-2"
 
 # Certificate for https access through ALB
