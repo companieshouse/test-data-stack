@@ -117,4 +117,10 @@ variable "tdg_release_version" {
   type        = string
   description = "The release version for the test-data-generator service."
 }
+
+# test-app-2
+
+variable "test2_release_version" {
+  type        = string
+  description = "The release version for test app 2."
 }

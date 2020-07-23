@@ -145,4 +145,7 @@ module "ecs-services" {
   # test-data-generator variables
   tdg_release_version       = var.tdg_release_version
   tdg_application_port      = "10000"
+  # test-app-2 variables
+  test2_release_version     = var.test2_release_version
+  test2_application_port    = "10002"
 }

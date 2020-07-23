@@ -81,4 +81,13 @@ variable "tdg_application_port" {
   type        = string
   description = "The port number for the test-data-generator service."
 }
+
+# test-app-2
+variable "test2_release_version" {
+  type        = string
+  description = "The release version for test app 2."
+}
+variable "test2_application_port" {
+  type        = string
+  description = "The port number for test app 2."
 }
