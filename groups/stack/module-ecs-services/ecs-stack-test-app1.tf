@@ -56,7 +56,7 @@ resource "aws_lb_target_group" "ecs-stack-test-app1-target_group" {
 
 resource "aws_lb_listener_rule" "ecs-stack-test-app1" {
   listener_arn = var.test-data-lb-listener-arn
-  priority     = 2
+  priority     = 3
   action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.ecs-stack-test-app1-target_group.arn
