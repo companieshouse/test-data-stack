@@ -1,0 +1,33 @@
+[
+    {
+        "environment": [
+            { "name": "PORT", "value": "${application_port}" },
+            { "name": "LOGLEVEL", "value": "${log_level}" },
+            { "name": "BARCODE_SERVICE_URL", "value": "http://barcode${external_top_level_domain}" }
+        ],
+        "name": "ecs-stack-test-app1",
+        "image": "${docker_registry}/ecs-stack-test-app1:${release_version}",
+        "cpu": 1,
+        "memory": 512,
+        "mountPoints": [],
+        "portMappings": [{
+            "containerPort": ${application_port},
+            "hostPort": 0,
+            "protocol": "tcp"
+        }],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-create-group": "true",
+                "awslogs-region": "${aws_region}",
+                "awslogs-group": "/ecs/${name_prefix}/ecs-stack-test-app1",
+                "awslogs-stream-prefix": "ecs"
+            }
+        },
+        "secrets": [
+            { "name": "MONGODB_URL", "valueFrom": "${test-data-generator-secret-mongo-url}" }
+        ],
+        "volumesFrom": [],
+        "essential": true
+    }
+]
