@@ -1,0 +1,13 @@
+aws_bucket = "staging-eu-west-2.terraform-state.ch.gov.uk"
+remote_state_bucket = "ch-service-staging-terraform-state"
+environment = "stagsbox"
+deploy_to = "staging"
+state_prefix = "env:/staging"
+aws_profile = "staging-eu-west-2"
+
+# Certificate for https access through ALB
+ssl_certificate_id = "arn:aws:iam::250991044064:server-certificate/Preprod2020"
+external_top_level_domain = "-stagsbox.companieshouse.gov.uk"
+internal_top_level_domain = "-stagsbox.staging.aws.internal"
+
+ec2_key_pair_name = "ch-aws-staging"
