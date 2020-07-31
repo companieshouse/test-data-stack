@@ -38,6 +38,11 @@ resource "aws_ecs_service" "ecs-stack-test-app1-ecs-service" {
     container_port   = var.test1_application_port
     container_name   = "${local.test1_service_name}"
   }
+  network_configuration {
+    security_groups = [aws_security_group.ecs-stack-test-app1-sg.id]
+    subnets = split(",", var.subnet_ids)
+    assign_public_ip = false
+  }
 }
 
 locals {
