@@ -5,6 +5,7 @@ resource "aws_ecs_service" "ecs-stack-test-app1-ecs-service" {
   task_definition = aws_ecs_task_definition.ecs-stack-test-app1-task-definition.arn
   desired_count   = 1
   depends_on      = [var.test-data-lb-arn]
+  launch_type = "FARGATE"
   load_balancer {
     target_group_arn = aws_lb_target_group.ecs-stack-test-app1-target_group.arn
     container_port   = var.test1_application_port
