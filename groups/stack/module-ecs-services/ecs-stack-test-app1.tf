@@ -36,6 +36,7 @@ locals {
 resource "aws_ecs_task_definition" "ecs-stack-test-app1-task-definition" {
   family             = "${var.environment}-${local.test1_service_name}"
   execution_role_arn = var.task_execution_role_arn
+  requires_compatibilities = ["FARGATE"]
   network_mode = "awsvpc"
   container_definitions = templatefile(
     "${path.module}/${local.test1_service_name}-task-definition.tmpl", local.ecs-stack-test-app1-definition
