@@ -1,6 +1,10 @@
+locals {
+  test1_service_name = "ecs-stack-test-app1"
+}
+
 
 resource "aws_ecs_service" "ecs-stack-test-app1-ecs-service" {
-  name            = "${var.environment}-ecs-stack-test-app1"
+  name            = "${var.environment}-${local.test1_service_name}"
   cluster         = var.ecs_cluster_id
   task_definition = aws_ecs_task_definition.ecs-stack-test-app1-task-definition.arn
   desired_count   = 1
@@ -9,7 +13,7 @@ resource "aws_ecs_service" "ecs-stack-test-app1-ecs-service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.ecs-stack-test-app1-target_group.arn
     container_port   = var.test1_application_port
-    container_name   = "ecs-stack-test-app1"
+    container_name   = "${local.test1_service_name}"
   }
 }
 
@@ -30,15 +34,15 @@ locals {
 }
 
 resource "aws_ecs_task_definition" "ecs-stack-test-app1-task-definition" {
-  family             = "${var.environment}-ecs-stack-test-app1"
+  family             = "${var.environment}-${local.test1_service_name}"
   execution_role_arn = var.task_execution_role_arn
   container_definitions = templatefile(
-    "${path.module}/ecs-stack-test-app1-task-definition.tmpl", local.ecs-stack-test-app1-definition
+    "${path.module}/${local.test1_service_name}-task-definition.tmpl", local.ecs-stack-test-app1-definition
   )
 }
 
 resource "aws_lb_target_group" "ecs-stack-test-app1-target_group" {
-  name     = "${var.environment}-ecs-stack-test-app1-tg"
+  name     = "${var.environment}-${local.test1_service_name}-tg"
   port     = var.test1_application_port
   protocol = "HTTP"
   vpc_id   = var.vpc_id
