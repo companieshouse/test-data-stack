@@ -2,6 +2,29 @@ locals {
   test1_service_name = "ecs-stack-test-app1"
 }
 
+resource "aws_security_group" "ecs-stack-test-app1-sg" {
+  description = "Security group for ${local.test1_service_name}"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    from_port   = var.test1_application_port
+    to_port     = var.test1_application_port
+    protocol    = "tcp"
+    cidr_blocks = var.web_access_cidrs
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Environment = var.environment
+    Name        = "${local.test1_service_name}-internal-service-sg"
+  }
+}
 
 resource "aws_ecs_service" "ecs-stack-test-app1-ecs-service" {
   name            = "${var.environment}-${local.test1_service_name}"
