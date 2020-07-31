@@ -133,6 +133,8 @@ module "ecs-services" {
   test-data-lb-arn          = module.ecs-stack.test-data-lb-listener-arn
   test-data-lb-listener-arn = module.ecs-stack.test-data-lb-listener-arn
   vpc_id                    = local.vpc_id
+  subnet_ids                = local.application_ids
+  web_access_cidrs          = concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs))
   aws_region                = var.aws_region
   ssl_certificate_id        = var.ssl_certificate_id
   external_top_level_domain = var.external_top_level_domain

@@ -21,6 +21,14 @@ variable "test-data-lb-listener-arn" {
   type        = string
   description = "The ARN of the lb listener created in the ecs-stack module."
 }
+variable "subnet_ids" {
+  type        = string
+  description = "Subnet IDs of application subnets from aws-mm-networks remote state."
+}
+variable "web_access_cidrs" {
+  type        = list(string)
+  description = "Subnet CIDRs for web ingress rules in the security group."
+}
 
 # DNS
 variable "external_top_level_domain" {
