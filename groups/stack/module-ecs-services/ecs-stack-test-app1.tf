@@ -32,15 +32,15 @@ resource "aws_ecs_service" "ecs-stack-test-app1-ecs-service" {
   task_definition = aws_ecs_task_definition.ecs-stack-test-app1-task-definition.arn
   desired_count   = 1
   depends_on      = [var.test-data-lb-arn]
-  launch_type = "FARGATE"
+  launch_type     = "FARGATE"
   load_balancer {
     target_group_arn = aws_lb_target_group.ecs-stack-test-app1-target_group.arn
     container_port   = var.test1_application_port
     container_name   = "${local.test1_service_name}"
   }
   network_configuration {
-    security_groups = [aws_security_group.ecs-stack-test-app1-sg.id]
-    subnets = split(",", var.subnet_ids)
+    security_groups  = [aws_security_group.ecs-stack-test-app1-sg.id]
+    subnets          = split(",", var.subnet_ids)
     assign_public_ip = false
   }
 }
@@ -62,22 +62,22 @@ locals {
 }
 
 resource "aws_ecs_task_definition" "ecs-stack-test-app1-task-definition" {
-  family             = "${var.environment}-${local.test1_service_name}"
-  execution_role_arn = var.task_execution_role_arn
+  family                   = "${var.environment}-${local.test1_service_name}"
+  execution_role_arn       = var.task_execution_role_arn
   requires_compatibilities = ["FARGATE"]
-  network_mode = "awsvpc"
-  cpu = 512
-  memory = 1024
-  container_definitions = templatefile(
+  network_mode             = "awsvpc"
+  cpu                      = 512
+  memory                   = 1024
+  container_definitions    = templatefile(
     "${path.module}/${local.test1_service_name}-task-definition.tmpl", local.ecs-stack-test-app1-definition
   )
 }
 
 resource "aws_lb_target_group" "ecs-stack-test-app1-target_group" {
-  name     = "${var.environment}-${local.test1_service_name}-tg"
-  port     = var.test1_application_port
-  protocol = "HTTP"
-  vpc_id   = var.vpc_id
+  name        = "${var.environment}-${local.test1_service_name}-tg"
+  port        = var.test1_application_port
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
   target_type = "ip"
 
   health_check {
