@@ -37,10 +37,11 @@ resource "aws_ecs_task_definition" "ecs-stack-test-app2-task-definition" {
 }
 
 resource "aws_lb_target_group" "ecs-stack-test-app2-target_group" {
-  name     = "${var.environment}-ecs-stack-test-app2-tg"
-  port     = var.test2_application_port
-  protocol = "HTTP"
-  vpc_id   = var.vpc_id
+  name                 = "${var.environment}-ecs-stack-test-app2-tg"
+  port                 = var.test2_application_port
+  protocol             = "HTTP"
+  vpc_id               = var.vpc_id
+  deregistration_delay = 20
 
   health_check {
     healthy_threshold   = "5"
