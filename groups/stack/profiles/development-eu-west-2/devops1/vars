@@ -12,3 +12,9 @@ external_top_level_domain = ".devops1.aws.chdev.org"
 internal_top_level_domain = "-devops1.development.aws.internal"
 
 ec2_key_pair_name = "chs-devops1"
+
+# shared configs
+log_level = "TRACE"
+
+# eric configs
+eric_cache_url = "devops1-chs-elasticache.9vgugg.ng.0001.euw2.cache.amazonaws.com:6379"

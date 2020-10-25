@@ -12,3 +12,9 @@ external_top_level_domain = ".cidev.aws.chdev.org"
 internal_top_level_domain = "-cidev.development.aws.internal"
 
 ec2_key_pair_name = "chs-cidev"
+
+# shared configs
+log_level = "TRACE"
+
+# eric configs
+eric_cache_url = "cidev-chs-elasticache.9vgugg.ng.0001.euw2.cache.amazonaws.com:6379"

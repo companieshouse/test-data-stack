@@ -144,12 +144,27 @@ module "ecs-services" {
   docker_registry           = var.docker_registry
   secrets_arn_map           = module.secrets.secrets_arn_map
   log_level                 = var.log_level
+
+  # eric specific configs
+  eric_version                   = var.eric_version
+  eric_cache_url                 = var.eric_cache_url
+  eric_cache_max_connections     = var.eric_cache_max_connections
+  eric_cache_max_idle            = var.eric_cache_max_idle
+  eric_cache_idle_timeout        = var.eric_cache_idle_timeout
+  eric_cache_ttl                 = var.eric_cache_ttl
+  eric_flush_interval            = var.eric_flush_interval
+  eric_graceful_shutdown_period  = var.eric_graceful_shutdown_period
+  eric_default_rate_limit        = var.eric_default_rate_limit
+  eric_default_rate_limit_window = var.eric_default_rate_limit_window
+
   # test-data-generator variables
   tdg_release_version       = var.tdg_release_version
   tdg_application_port      = "10000"
+
   # test-app-1 variables
   test1_release_version     = var.test1_release_version
   test1_application_port    = "10001"
+
   # test-app-2 variables
   test2_release_version     = var.test2_release_version
   test2_application_port    = "10002"
