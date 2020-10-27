@@ -11,3 +11,9 @@ external_top_level_domain = "-stagsbox.companieshouse.gov.uk"
 internal_top_level_domain = "-stagsbox.staging.aws.internal"
 
 ec2_key_pair_name = "ch-aws-staging"
+
+# shared configs
+log_level = "TRACE"
+
+# eric configs
+eric_cache_url = "redis1-stagsbox.staging.aws.internal:6379"
