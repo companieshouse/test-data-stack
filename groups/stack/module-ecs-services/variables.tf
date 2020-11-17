@@ -123,22 +123,27 @@ variable "tdg_application_port" {
   description = "The port number for the test-data-generator service."
 }
 
-# test-app-1
-variable "test1_release_version" {
+# chips-filing-mock
+variable "chips_filing_mock_release_version" {
   type        = string
-  description = "The release version for test app 1."
+  description = "The release version for chips filing mock."
 }
-variable "test1_application_port" {
-  type        = string
-  description = "The port number for test app 1."
+variable "chips_filing_mock_desired_count" {
+  type        = number
+  description = "The number of instances of chips filing mock to run."
 }
-
-# test-app-2
-variable "test2_release_version" {
+variable "chs_kafka_api_url" {
   type        = string
-  description = "The release version for test app 2."
 }
-variable "test2_application_port" {
+variable "kafka_broker_address" {
   type        = string
-  description = "The port number for test app 2."
+}
+variable "kafka_consumer_topic" {
+  type        = string
+}
+variable "kafka_consumer_timeout_ms" {
+  type        = string
+}
+variable "kafka_consumer_sleep_ms" {
+  type        = string
 }

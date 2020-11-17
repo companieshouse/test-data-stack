@@ -161,11 +161,12 @@ module "ecs-services" {
   tdg_release_version       = var.tdg_release_version
   tdg_application_port      = "10000"
 
-  # test-app-1 variables
-  test1_release_version     = var.test1_release_version
-  test1_application_port    = "10001"
-
-  # test-app-2 variables
-  test2_release_version     = var.test2_release_version
-  test2_application_port    = "10002"
+  # chips filing mock variables
+  chips_filing_mock_release_version = var.chips_filing_mock_release_version
+  chips_filing_mock_desired_count   = var.chips_filing_mock_desired_count
+  chs_kafka_api_url                 = var.chs_kafka_api_url
+  kafka_broker_address              = var.kafka_broker_address
+  kafka_consumer_topic              = var.kafka_consumer_topic
+  kafka_consumer_timeout_ms         = var.kafka_consumer_timeout_ms
+  kafka_consumer_sleep_ms           = var.kafka_consumer_sleep_ms
 }
