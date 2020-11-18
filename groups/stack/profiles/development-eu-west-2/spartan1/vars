@@ -3,8 +3,6 @@ remote_state_bucket = "ch-development-terraform-state-london"
 environment = "spartan1"
 deploy_to = "development"
 state_prefix = "env:/development"
-workspace_key_prefix = "test-data-generator-stack"
-state_file_name = "test-data-generator.tfstate"
 aws_profile = "development-eu-west-2"
 
 # Certificate for https access through ALB
@@ -14,3 +12,9 @@ external_top_level_domain = ".spartan1.aws.chdev.org"
 internal_top_level_domain = "-spartan1.development.aws.internal"
 
 ec2_key_pair_name = "chs-spartan1"
+
+# shared configs
+log_level = "TRACE"
+
+# eric configs
+eric_cache_url = "cidev-chs-elasticache.9vgugg.ng.0001.euw2.cache.amazonaws.com:6379"

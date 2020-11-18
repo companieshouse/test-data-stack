@@ -19,10 +19,6 @@ variable "aws_bucket" {
   type        = string
   description = "The bucket used to store the current terraform state files"
 }
-variable "workspace_key_prefix" {
-  type        = string
-  description = "The bucket prefix used with the aws_bucket files."
-}
 variable "remote_state_bucket" {
   type        = string
   description = "Alternative bucket used to store the remote state files from ch-service-terraform"
@@ -40,10 +36,6 @@ variable "deploy_to" {
 variable "docker_registry" {
   type        = string
   description = "The FQDN of the Docker registry."
-}
-variable "release_version" {
-  type        = string
-  description = "The github release version used here for Docker image tagging."
 }
 variable "log_level" {
   default     = "INFO"
@@ -115,9 +107,83 @@ variable "vault_password" {
   description = "The password used by the Vault provider."
 }
 
-# Secrets
-variable "vault_secrets" {
-  type = list(string)
-  description = "A list of the secrets to be added to Parameter Store."
-  default = [ "secret-mongo-url" ]
+# ------------------------------------------------------------------------------
+# Services
+# ------------------------------------------------------------------------------
+
+# eric
+variable "eric_version" {
+  type        = string
+  description = "The version of the eric service/container to run as a reverse proxy in front of tdg service."
+}
+variable "eric_cache_url" {
+  type = string
+}
+variable "eric_cache_max_connections" {
+  type = string
+  default = "10"
+}
+variable "eric_cache_max_idle" {
+  type = string
+  default = "3"
+}
+variable "eric_cache_idle_timeout" {
+  type = string
+  default = "240"
+}
+variable "eric_cache_ttl" {
+  type = string
+  default = "600"
+}
+variable "eric_flush_interval" {
+  type = string
+  default = "10"
+}
+variable "eric_graceful_shutdown_period" {
+  type = string
+  default = "2"
+}
+variable "eric_default_rate_limit" {
+  type = string
+  default = "600"
+}
+variable "eric_default_rate_limit_window" {
+  type = string
+  default = "5m"
+}
+
+# test-data-generator
+
+variable "tdg_release_version" {
+  type        = string
+  description = "The release version for the test-data-generator service."
+}
+
+# chips-filing-mock
+variable "chips_filing_mock_release_version" {
+  type        = string
+  description = "The release version for chips filing mock."
+}
+variable "chips_filing_mock_desired_count" {
+  type        = number
+  description = "The number of instances of chips filing mock to run."
+  default      = 1
+}
+variable "chs_kafka_api_url" {
+  type        = string
+}
+variable "kafka_broker_address" {
+  type        = string
+}
+variable "kafka_consumer_topic" {
+  type        = string
+  default     = "filing-received"
+}
+variable "kafka_consumer_timeout_ms" {
+  type        = string
+  default     = "100"
+}
+variable "kafka_consumer_sleep_ms" {
+  type        = string
+  default     = "10000"
 }

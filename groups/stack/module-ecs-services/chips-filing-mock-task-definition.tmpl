@@ -1,0 +1,30 @@
+[
+    {
+        "environment": [
+            { "name": "LOGLEVEL", "value": "${log_level}" },
+            { "name": "CHS_KAFKA_API_LOCAL_URL", "value": "${chs_kafka_api_url}" },
+            { "name": "KAFKA_BROKER_ADDR", "value": "${kafka_broker_address}" },
+            { "name": "KAFKA_CONSUMER_TOPIC", "value": "${kafka_consumer_topic}" },
+            { "name": "KAFKA_CONSUMER_TIMEOUT_MS", "value": "${kafka_consumer_timeout_ms}" },
+            { "name": "CONSUMER_SLEEP_MS", "value": "${kafka_consumer_sleep_ms}" }
+        ],
+        "name": "chips-filing-mock",
+        "image": "${docker_registry}/chips-filing-mock:${chips_filing_mock_release_version}",
+        "cpu": 1,
+        "memory": 512,
+        "mountPoints": [],
+        "portMappings": [],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-create-group": "true",
+                "awslogs-region": "${aws_region}",
+                "awslogs-group": "/ecs/${name_prefix}/chips-filing-mock",
+                "awslogs-stream-prefix": "ecs"
+            }
+        },
+        "secrets": [],
+        "volumesFrom": [],
+        "essential": true
+    }
+]
