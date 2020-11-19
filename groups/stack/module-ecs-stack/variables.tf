@@ -27,9 +27,9 @@ variable "vpc_id" {
   type        = string
   description = "The ID of the VPC for the target group and security group."
 }
-variable "tdg_loadbalancer_internal" {
+variable "test_data_lb_internal" {
   type        = bool
-  description = "Whether the TDG ALB should be internal or public facing"
+  description = "Whether the Test Data ALB should be internal or public facing"
 }
 
 # DNS

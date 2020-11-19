@@ -123,7 +123,7 @@ module "ecs-stack" {
   internal_top_level_domain = var.internal_top_level_domain
   subnet_ids                = local.application_ids
   web_access_cidrs          = concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs))
-  tdg_loadbalancer_internal = var.tdg_loadbalancer_internal
+  test_data_lb_internal     = var.test_data_lb_internal
 }
 
 module "ecs-services" {

@@ -108,9 +108,9 @@ variable "vault_password" {
 }
 
 # Networking
-variable "tdg_loadbalancer_internal" {
+variable "test_data_lb_internal" {
   type        = bool
-  description = "Whether the TDG ALB should be internal or public facing"
+  description = "Whether the Test Data ALB should be internal or public facing"
   default     = true
 }
 
