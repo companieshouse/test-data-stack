@@ -107,6 +107,13 @@ variable "vault_password" {
   description = "The password used by the Vault provider."
 }
 
+# Networking
+variable "tdg_loadbalancer_internal" {
+  type        = bool
+  description = "Whether the TDG ALB should be internal or public facing"
+  default     = true
+}
+
 # ------------------------------------------------------------------------------
 # Services
 # ------------------------------------------------------------------------------

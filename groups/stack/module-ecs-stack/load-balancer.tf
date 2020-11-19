@@ -2,7 +2,7 @@ resource "aws_lb" "test-data-lb" {
   name            = "${var.stack_name}-${var.environment}-lb"
   security_groups = [aws_security_group.internal-service-sg.id]
   subnets         = flatten([split(",", var.subnet_ids)])
-  internal        = true
+  internal        = var.tdg_loadbalancer_internal
 }
 
 resource "aws_lb_listener" "test-data-lb-listener" {

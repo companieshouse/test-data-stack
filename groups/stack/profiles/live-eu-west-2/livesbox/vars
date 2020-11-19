@@ -12,6 +12,9 @@ internal_top_level_domain = "-livesbox.live.aws.internal"
 
 ec2_key_pair_name = "ch-aws-livesbox"
 
+# TDG ALB configs
+tdg_loadbalancer_internal = false # test data ALB needs to be available publicly in live sandbox env
+
 # shared configs
 log_level = "TRACE"
 
