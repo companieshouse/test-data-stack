@@ -39,6 +39,9 @@ variable "internal_top_level_domain" {
   type        = string
   description = "The type levelel of the DNS domain for internal access."
 }
+variable "account_subdomain_prefix" {
+  type = string
+}
 
 # ECS Service
 variable "name_prefix" {

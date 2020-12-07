@@ -96,6 +96,11 @@ variable "internal_top_level_domain" {
   type        = string
   description = "The type levelel of the DNS domain for internal access."
 }
+variable "account_subdomain_prefix" {
+  type = string
+  description = "The first part of the account/identity service subdomain - either \"account\" or \"identity\""
+  default = "account"
+}
 
 # Vault
 variable "vault_username" {

@@ -10,6 +10,8 @@ ssl_certificate_id = "arn:aws:iam::449229032822:server-certificate/Live_2022"
 external_top_level_domain = "-sandbox.company-information.service.gov.uk"
 internal_top_level_domain = "-livesbox.live.aws.internal"
 
+account_subdomain_prefix = "identity"
+
 ec2_key_pair_name = "ch-aws-livesbox"
 
 # TDG ALB configs

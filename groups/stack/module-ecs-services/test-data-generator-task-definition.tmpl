@@ -2,7 +2,7 @@
     {
         "environment": [
             { "name": "PORT", "value": "${eric_port}" },
-            { "name": "ACCOUNT_API_URL", "value": "https://account${external_top_level_domain}" },
+            { "name": "ACCOUNT_API_URL", "value": "https://${account_subdomain_prefix}${external_top_level_domain}" },
             { "name": "DEVELOPER_HUB_URL", "value": "https://developer${external_top_level_domain}" },
             { "name": "CACHE_URL", "value": "${eric_cache_url}" },
             { "name": "CACHE_MAX_CONNECTIONS", "value": "${eric_cache_max_connections}" },
