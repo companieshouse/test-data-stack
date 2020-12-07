@@ -1,0 +1,26 @@
+aws_bucket = "live-eu-west-2.terraform-state.ch.gov.uk"
+remote_state_bucket = "ch-service-live-terraform-state"
+environment = "livesbox"
+deploy_to = "live"
+state_prefix = "env:/live"
+aws_profile = "live-eu-west-2"
+
+# Certificate for https access through ALB
+ssl_certificate_id = "arn:aws:iam::449229032822:server-certificate/Production_2022"
+external_top_level_domain = "-sandbox.company-information.service.gov.uk"
+internal_top_level_domain = "-livesbox.live.aws.internal"
+
+ec2_key_pair_name = "ch-aws-livesbox"
+
+# TDG ALB configs
+test_data_lb_internal = false # test data ALB needs to be available publicly in live sandbox env
+
+# shared configs
+log_level = "TRACE"
+
+# eric configs
+eric_cache_url = "livesbox-chs-elasticache.yaky4x.ng.0001.euw2.cache.amazonaws.com:6379"
+
+# chips filing mock configs
+chs_kafka_api_url = "http://internal-livesbox-chs-kafka-api-692171571.eu-west-2.elb.amazonaws.com"
+kafka_broker_address = "kafka-broker1-livesbox.live.aws.internal:9092"

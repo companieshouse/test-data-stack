@@ -27,6 +27,10 @@ variable "vpc_id" {
   type        = string
   description = "The ID of the VPC for the target group and security group."
 }
+variable "test_data_lb_internal" {
+  type        = bool
+  description = "Whether the Test Data ALB should be internal or public facing"
+}
 
 # DNS
 variable "zone_id" {
