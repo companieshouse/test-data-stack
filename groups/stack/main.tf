@@ -22,6 +22,8 @@ locals {
   vpc_id            = data.terraform_remote_state.networks.outputs.vpc_id
   application_ids   = data.terraform_remote_state.networks.outputs.application_ids
   application_cidrs = data.terraform_remote_state.networks.outputs.application_cidrs
+  public_ids        = data.terraform_remote_state.networks.outputs.public_ids
+  public_cidrs      = data.terraform_remote_state.networks.outputs.public_cidrs
 }
 
 # Configure the remote state data source to acquire configuration created
@@ -82,6 +84,15 @@ locals {
   stack_name       = "test-data"
   stack_fullname   = "${local.stack_name}-stack"
   name_prefix      = "${local.stack_name}-${var.environment}"
+
+  public_lb_cidrs  = ["0.0.0.0/0"]
+  lb_subnet_ids    = "${var.test_data_lb_internal ? local.application_ids : local.public_ids}" # place ALB in correct subnets
+  lb_access_cidrs  = "${var.test_data_lb_internal ?
+                      concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs)) :
+                      local.public_lb_cidrs }"
+  app_access_cidrs = "${var.test_data_lb_internal ?
+                      concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs)) :
+                      concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs),split(",",local.public_cidrs)) }"
 }
 
 module "ecs-cluster" {
@@ -121,8 +132,8 @@ module "ecs-stack" {
   zone_id                   = var.zone_id
   external_top_level_domain = var.external_top_level_domain
   internal_top_level_domain = var.internal_top_level_domain
-  subnet_ids                = local.application_ids
-  web_access_cidrs          = concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs))
+  subnet_ids                = local.lb_subnet_ids
+  web_access_cidrs          = local.lb_access_cidrs
   test_data_lb_internal     = var.test_data_lb_internal
 }
 
@@ -135,7 +146,7 @@ module "ecs-services" {
   test-data-lb-listener-arn = module.ecs-stack.test-data-lb-listener-arn
   vpc_id                    = local.vpc_id
   subnet_ids                = local.application_ids
-  web_access_cidrs          = concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs))
+  web_access_cidrs          = local.app_access_cidrs
   aws_region                = var.aws_region
   ssl_certificate_id        = var.ssl_certificate_id
   external_top_level_domain = var.external_top_level_domain
