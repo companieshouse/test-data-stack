@@ -6,7 +6,7 @@ state_prefix = "env:/live"
 aws_profile = "live-eu-west-2"
 
 # Certificate for https access through ALB
-ssl_certificate_id = "arn:aws:iam::449229032822:server-certificate/Live_2022"
+ssl_certificate_id = "arn:aws:acm:eu-west-2:449229032822:certificate/5c57a264-3168-4de8-8767-40fd0cedebf0"
 external_top_level_domain = "-sandbox.company-information.service.gov.uk"
 internal_top_level_domain = "-livesbox.live.aws.internal"
 
