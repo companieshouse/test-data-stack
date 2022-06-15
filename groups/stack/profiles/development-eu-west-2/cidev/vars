@@ -22,3 +22,8 @@ eric_cache_url = "cidev-chs-elasticache.9vgugg.ng.0001.euw2.cache.amazonaws.com:
 # chips filing mock configs
 chs_kafka_api_url = "http://internal-cidev-chs-kafka-api-1268545499.eu-west-2.elb.amazonaws.com"
 kafka_broker_address = "kafka-broker1-cidev.development.aws.internal:9092"
+
+# instances of chips filing mock service to run - set to 0 to turn the service off in cidev during normal
+# testing to avoid duplicate emails and confusion for scrum teams.
+# set back to 1 temporarily to test this service in cidev but remember to set to 0 again afterwards!
+chips_filing_mock_desired_count = 0
