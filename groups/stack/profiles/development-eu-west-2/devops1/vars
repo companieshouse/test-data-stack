@@ -18,3 +18,11 @@ log_level = "TRACE"
 
 # eric configs
 eric_cache_url = "devops1-chs-elasticache.9vgugg.ng.0001.euw2.cache.amazonaws.com:6379"
+
+# chips filing mock configs
+kafka_broker_address = "kafka-broker1-devops1.development.aws.internal:9092"
+
+# instances of chips filing mock service to run - set to 0 to turn the service off in cidev during normal
+# testing to avoid duplicate emails and confusion for scrum teams.
+# set back to 1 temporarily to test this service in cidev but remember to set to 0 again afterwards!
+chips_filing_mock_desired_count = 0
