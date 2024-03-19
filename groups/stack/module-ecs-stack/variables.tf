@@ -51,3 +51,8 @@ variable "ssl_certificate_id" {
   type        = string
   description = "The ARN of the certificate for https access through the ALB."
 }
+
+variable "concourse_access_cidrs" {
+  type        = list(string)
+  description = "A list of CIDR blocks used to permit access from Shared Services Concourse"
+}
