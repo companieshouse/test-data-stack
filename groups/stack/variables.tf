@@ -182,6 +182,7 @@ variable "chips_filing_mock_desired_count" {
   default      = 1
 }
 variable "chs_kafka_api_url" {
+  default     = ""
   type        = string
 }
 variable "kafka_broker_address" {
