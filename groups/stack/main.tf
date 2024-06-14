@@ -1,13 +1,20 @@
 terraform {
-  backend "s3" {
+
+  required_version = ">= 0.13.0, < 0.14"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.54.0"
+    }
+    vault = {
+      source  = "hashicorp/vault"
+      version = "~> 3.18.0"
+    }
   }
-}
 
-provider "aws" {
-  region  = var.aws_region
-  version = "~> 2.32.0"
+  backend "s3" {}
 }
-
 
 provider "vault" {
   auth_login {
@@ -19,7 +26,7 @@ provider "vault" {
 }
 
 module "ecs-cluster" {
-  source = "git::git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.1"
+  source = "git::git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.7"
 
   stack_name                 = local.stack_name
   name_prefix                = local.name_prefix
