@@ -26,7 +26,7 @@ provider "vault" {
 }
 
 module "ecs-cluster" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/ecs/ecs-cluster?ref=1.0.275"
+  source = "git@github.com:companieshouse/terraform-modules//aws/ecs/ecs-cluster?ref=1.0.276"
 
   aws_profile                = var.aws_profile
   stack_name                 = local.stack_name
