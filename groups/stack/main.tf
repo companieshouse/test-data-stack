@@ -1,6 +1,6 @@
 terraform {
 
-  required_version = ">= 0.13.0, < 0.14"
+  required_version = "~> 1.3"
 
   required_providers {
     aws = {
@@ -26,8 +26,9 @@ provider "vault" {
 }
 
 module "ecs-cluster" {
-  source = "git::git@github.com:companieshouse/terraform-library-ecs-cluster.git?ref=1.1.7"
+  source = "git@github.com:companieshouse/terraform-modules//aws/ecs/ecs-cluster?ref=1.0.275"
 
+  aws_profile                = var.aws_profile
   stack_name                 = local.stack_name
   name_prefix                = local.name_prefix
   environment                = var.environment
@@ -35,7 +36,6 @@ module "ecs-cluster" {
   subnet_ids                 = local.application_ids
   ec2_key_pair_name          = var.ec2_key_pair_name
   ec2_instance_type          = var.ec2_instance_type
-  ec2_image_id               = var.ec2_image_id
   asg_max_instance_count     = var.asg_max_instance_count
   asg_min_instance_count     = var.asg_min_instance_count
   asg_desired_instance_count = var.asg_desired_instance_count

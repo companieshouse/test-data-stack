@@ -53,11 +53,6 @@ variable "ec2_instance_type" {
   type        = string
   description = "The instance type for ec2 instances in the clusters."
 }
-variable "ec2_image_id" {
-  default     = "ami-007ef488b3574da6b" # ECS optimized Linux in London created 16/10/2019
-  type        = string
-  description = "The machine image name for the ECS cluster launch configuration."
-}
 
 # Auto-scaling Group
 variable "asg_max_instance_count" {
