@@ -38,7 +38,7 @@ resource "aws_security_group_rule" "web_https" {
 }
 
 resource "aws_security_group_rule" "concourse_http" {
-  for_each = toset(var.concourse_access_cidrs)
+  for_each = nonsensitive(toset(var.concourse_access_cidrs))
 
   type              = "ingress"
   from_port         = 80
@@ -49,7 +49,7 @@ resource "aws_security_group_rule" "concourse_http" {
 }
 
 resource "aws_security_group_rule" "concourse_https" {
-  for_each = toset(var.concourse_access_cidrs)
+  for_each = nonsensitive(toset(var.concourse_access_cidrs))
 
   type              = "ingress"
   from_port         = 443
