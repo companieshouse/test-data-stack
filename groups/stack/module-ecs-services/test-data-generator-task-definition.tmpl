@@ -50,7 +50,8 @@
             { "name": "PORT", "value": "${tdg_proxy_port}" },
             { "name": "LOGLEVEL", "value": "${log_level}" },
             { "name": "BARCODE_SERVICE_URL", "value": "http://barcode${external_top_level_domain}" },
-            { "name": "API_URL", "value": "https://api${external_top_level_domain}" }
+            { "name": "API_URL", "value": "https://api${external_top_level_domain}" },
+            { "name": "JAVA_MEM_ARGS", "value": "--add-opens java.base/java.time=ALL-UNNAMED" }
         ],
         "name": "${service_name}",
         "image": "${docker_registry}/${service_name}:${tdg_release_version}",
