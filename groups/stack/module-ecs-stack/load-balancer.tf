@@ -6,7 +6,7 @@ resource "aws_lb" "test-data-lb" {
 
   tags = {
     environment = var.environment
-    Name        = "${var.name_prefix}-internal-service-sg"
+    Name        = "${var.stack_name}-${var.environment}-lb"
     service     = "chs"
   }
 }
