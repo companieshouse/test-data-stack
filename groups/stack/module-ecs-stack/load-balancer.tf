@@ -3,6 +3,12 @@ resource "aws_lb" "test-data-lb" {
   security_groups = [aws_security_group.internal-service-sg.id]
   subnets         = flatten([split(",", var.subnet_ids)])
   internal        = var.test_data_lb_internal
+
+  tags = {
+    environment = var.environment
+    Name        = "${var.name_prefix}-internal-service-sg"
+    service     = "chs"
+  }
 }
 
 resource "aws_lb_listener" "test-data-lb-listener" {
