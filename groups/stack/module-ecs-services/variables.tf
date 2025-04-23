@@ -150,3 +150,9 @@ variable "kafka_consumer_timeout_ms" {
 variable "kafka_consumer_sleep_ms" {
   type        = string
 }
+
+# elastic search
+variable "elastic_search_deployed" {
+  type        = bool
+  description = "Whether elastic search is deployed or not."
+}

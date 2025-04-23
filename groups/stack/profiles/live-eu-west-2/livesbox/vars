@@ -26,3 +26,6 @@ eric_cache_url = "livesbox-chs-elasticache.yaky4x.ng.0001.euw2.cache.amazonaws.c
 # chips filing mock configs
 chs_kafka_api_url = "http://internal-livesbox-chs-kafka-api-127987534.eu-west-2.elb.amazonaws.com"
 kafka_broker_address = "kafka-broker1-livesbox.live.aws.internal:9092"
+
+# test data generator elastic search configs
+elastic_search_deployed = false

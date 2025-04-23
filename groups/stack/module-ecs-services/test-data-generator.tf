@@ -44,6 +44,9 @@ locals {
       # tdg specific configs
       tdg_release_version        : var.tdg_release_version
       tdg_proxy_port             : local.tdg_proxy_port
+
+      # tdg elastic search
+      elastic_search_deployed        : var.elastic_search_deployed
     },
       var.secrets_arn_map
   )
