@@ -200,4 +200,5 @@ variable "kafka_consumer_sleep_ms" {
 variable "elastic_search_deployed" {
   type        = bool
   description = "The URL of the elastic search service."
+  default     = true
 }
