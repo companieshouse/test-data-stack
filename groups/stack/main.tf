@@ -113,4 +113,7 @@ module "ecs-services" {
   kafka_consumer_topic              = var.kafka_consumer_topic
   kafka_consumer_timeout_ms         = var.kafka_consumer_timeout_ms
   kafka_consumer_sleep_ms           = var.kafka_consumer_sleep_ms
+
+  # elastic search
+  elastic_search_deployed = var.elastic_search_deployed
 }

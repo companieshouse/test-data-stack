@@ -50,7 +50,8 @@
             { "name": "PORT", "value": "${tdg_proxy_port}" },
             { "name": "LOGLEVEL", "value": "${log_level}" },
             { "name": "BARCODE_SERVICE_URL", "value": "http://barcode${external_top_level_domain}" },
-            { "name": "API_URL", "value": "https://api${external_top_level_domain}" }
+            { "name": "API_URL", "value": "https://api${external_top_level_domain}" },
+            { "name": "ELASTIC_SEARCH_DEPLOYED", "value": "${elastic_search_deployed}" }
         ],
         "name": "${service_name}",
         "image": "${docker_registry}/${service_name}:${tdg_release_version}",
@@ -72,7 +73,8 @@
             }
         },
         "secrets": [
-            { "name": "MONGODB_URL", "valueFrom": "${test-data-generator-secret-mongo-url}" }
+            { "name": "MONGODB_URL", "valueFrom": "${test-data-generator-secret-mongo-url}" },
+            { "name": "CHS_API_KEY", "valueFrom": "${test-data-generator-secret-chs-api-key}" }
         ],
         "volumesFrom": [],
         "essential": true

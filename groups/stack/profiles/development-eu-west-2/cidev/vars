@@ -27,3 +27,6 @@ kafka_broker_address = "kafka-broker1-cidev.development.aws.internal:9092"
 # testing to avoid duplicate emails and confusion for scrum teams.
 # set back to 1 temporarily to test this service in cidev but remember to set to 0 again afterwards!
 chips_filing_mock_desired_count = 0
+
+# test data generator elastic search configs
+elastic_search_deployed = true

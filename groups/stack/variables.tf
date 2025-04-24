@@ -195,3 +195,10 @@ variable "kafka_consumer_sleep_ms" {
   type        = string
   default     = "10000"
 }
+
+# elastic search
+variable "elastic_search_deployed" {
+  type        = bool
+  description = "The URL of the elastic search service."
+  default     = true
+}

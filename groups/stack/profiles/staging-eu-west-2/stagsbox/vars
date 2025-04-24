@@ -21,3 +21,6 @@ eric_cache_url = "stagsbox-chs-elasticache.3psdof.ng.0001.euw2.cache.amazonaws.c
 # chips filing mock configs
 chs_kafka_api_url = "http://internal-stagsbox-chs-kafka-api-1558208271.eu-west-2.elb.amazonaws.com"
 kafka_broker_address = "kafka-broker1-stagsbox.staging.aws.internal:9092"
+
+# test data generator elastic search configs
+elastic_search_deployed = false
