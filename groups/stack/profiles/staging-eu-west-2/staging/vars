@@ -8,7 +8,7 @@ aws_profile = "staging-eu-west-2"
 # Certificate for https access through ALB
 ssl_certificate_id = "arn:aws:acm:eu-west-2:250991044064:certificate/56b76dab-5728-4f83-a16d-e3dd59cd82c8"
 external_top_level_domain = "-staging.companieshouse.gov.uk"
-internal_top_level_domain = ".staging.aws.internal"
+internal_top_level_domain = "-staging.staging.aws.internal"
 
 account_subdomain_prefix = "identity"
 
