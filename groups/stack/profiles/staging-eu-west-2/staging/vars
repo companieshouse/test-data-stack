@@ -19,8 +19,7 @@ log_level = "TRACE"
 eric_cache_url = "staging-chs-elasticache.3psdof.ng.0001.euw2.cache.amazonaws.com:6379"
 
 # chips filing mock configs
-# The following value for chs_kafka_api_url does not exist, however it's ok as chips filing mock is disabled in this env
-chs_kafka_api_url = "http://internal-staging-chs-kafka-api-1558208271.eu-west-2.elb.amazonaws.com"
+chs_kafka_api_url = "http://chs-kafka-api.staging.aws.internal"
 kafka_broker_address = "kafka-broker1.staging.aws.internal:9092"
 
 # instances of chips filing mock service to run - set to 0 to turn the service off in staging during normal
@@ -29,4 +28,4 @@ kafka_broker_address = "kafka-broker1.staging.aws.internal:9092"
 chips_filing_mock_desired_count = 0
 
 # test data generator elastic search configs
-elastic_search_deployed = false
+elastic_search_deployed = true
