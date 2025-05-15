@@ -10,6 +10,8 @@ ssl_certificate_id = "arn:aws:acm:eu-west-2:250991044064:certificate/56b76dab-57
 external_top_level_domain = "-staging.companieshouse.gov.uk"
 internal_top_level_domain = ".staging.aws.internal"
 
+account_subdomain_prefix = "identity"
+
 ec2_key_pair_name = "ch-aws-staging"
 
 # shared configs
