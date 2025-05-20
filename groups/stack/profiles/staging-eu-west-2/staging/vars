@@ -1,0 +1,33 @@
+aws_bucket = "staging-eu-west-2.terraform-state.ch.gov.uk"
+remote_state_bucket = "ch-service-staging-terraform-state"
+environment = "staging"
+deploy_to = "staging"
+state_prefix = "env:/staging"
+aws_profile = "staging-eu-west-2"
+
+# Certificate for https access through ALB
+ssl_certificate_id = "arn:aws:acm:eu-west-2:250991044064:certificate/56b76dab-5728-4f83-a16d-e3dd59cd82c8"
+external_top_level_domain = "-staging.companieshouse.gov.uk"
+internal_top_level_domain = "-staging.staging.aws.internal"
+
+account_subdomain_prefix = "identity"
+
+ec2_key_pair_name = "ch-aws-staging"
+
+# shared configs
+log_level = "TRACE"
+
+# eric configs
+eric_cache_url = "staging-chs-elasticache.3psdof.ng.0001.euw2.cache.amazonaws.com:6379"
+
+# chips filing mock configs
+chs_kafka_api_url = "http://chs-kafka-api.staging.aws.internal"
+kafka_broker_address = "kafka-broker1.staging.aws.internal:9092"
+
+# instances of chips filing mock service to run - set to 0 to turn the service off in staging during normal
+# testing to avoid duplicate emails and confusion for scrum teams.
+# set back to 1 temporarily to test this service in staging but remember to set to 0 again afterwards!
+chips_filing_mock_desired_count = 0
+
+# test data generator elastic search configs
+elastic_search_deployed = true
