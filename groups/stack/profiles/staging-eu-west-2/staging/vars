@@ -30,4 +30,4 @@ kafka_broker_address = "kafka-broker1.staging.aws.internal:9092"
 chips_filing_mock_desired_count = 0
 
 # test data generator elastic search configs
-elastic_search_deployed = true
+elastic_search_deployed = false
